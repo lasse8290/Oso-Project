@@ -6,12 +6,17 @@ public class TileController : MonoBehaviour {
 
     public static TileController Instace { get; set; }
 
+    [SerializeField]
+    int sp = 0;
+
     public GameObject TileWhite;
     public GameObject TileBlue;
     public GameObject TileRed;
+    public GameObject TileYellow;
 
+    List<GameObject> GoTiles = new List<GameObject>();
 
-    Levels ls = new Levels();
+    Level level;
 
     int sizex;
 
@@ -21,48 +26,64 @@ public class TileController : MonoBehaviour {
 
     public int SizeY { get { return sizey; } }
 
-    Tile[,] TilemapCruent;
-    Tile[,] TilemapEnd;
-
-
     private void Awake () {
 
         Instace = this;
-        Loadlevel(0);
+
     }
 
-    void Loadlevel (int Level) {
+    private void Start () {
+        GenLevel(0);
+    }
 
-        //get and set the level start and end
-        ls.GetLevel(0, out TilemapCruent, out TilemapEnd);
+    void GenLevel (int LevelToLoad) {
 
-        sizex = TilemapCruent.GetLength(0) - 1;
-        sizey = TilemapCruent.GetLength(1) - 1;
+        level = new Level(LevelToLoad);
+
+        sp = level.Spread;
+
+        sizex = level.TileMapCruent.GetLength(0);
+        sizey = level.TileMapCruent.GetLength(1);
 
         //spawn the tiles
-        for (int x = 0; x < TilemapCruent.GetLength(0); x++) {
-            for (int y = 0; y < TilemapCruent.GetLength(1); y++) {
+        for (int x = 0; x < level.TileMapCruent.GetLength(0); x++) {
+            for (int y = 0; y < level.TileMapCruent.GetLength(1); y++) {
 
-                switch (TilemapCruent[x, y].Tilecolor) {
-                    case Tile.TileColor.white:
+                switch (level.TileMapCruent[x, y].Tilecolor) {
+                    case Tile.TileColor.White:
 
                         var goW = Instantiate(TileWhite, new Vector3(x, y, 0), Quaternion.identity);
 
-                        goW.name = string.Format("Tile:{0}_{1}, color: White", x, y);
+                        goW.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, level.TileMapCruent[x, y].Tilecolor);
+
+                        GoTiles.Add(goW);
 
                         break;
 
-                    case Tile.TileColor.blue:
+                    case Tile.TileColor.Blue:
                         var goB = Instantiate(TileBlue, new Vector3(x, y, 0), Quaternion.identity);
 
-                        goB.name = string.Format("Tile:{0}_{1}, color: White", x, y);
+                        goB.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, level.TileMapCruent[x, y].Tilecolor);
+
+                        GoTiles.Add(goB);
 
                         break;
 
-                    case Tile.TileColor.red:
+                    case Tile.TileColor.Red:
                         var goR = Instantiate(TileRed, new Vector3(x, y, 0), Quaternion.identity);
 
-                        goR.name = string.Format("Tile:{0}_{1}, color: White", x, y);
+                        goR.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, level.TileMapCruent[x, y].Tilecolor);
+
+                        GoTiles.Add(goR);
+
+                        break;
+
+                    case Tile.TileColor.Yellow:
+                        var goY = Instantiate(TileYellow, new Vector3(x, y, 0), Quaternion.identity);
+
+                        goY.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, level.TileMapCruent[x, y].Tilecolor);
+
+                        GoTiles.Add(goY);
 
                         break;
 
@@ -73,42 +94,88 @@ public class TileController : MonoBehaviour {
         }
     }
 
+    public void PlaceTileAt (Tile t, Tile.TileColor TC) {
 
-    public void UpdateTileAt (Tile t) {
+        GetTileAt(t.X, t.Y).ChangeTileColor(TC);
 
-        GameObject go = GameObject.Find(string.Format("Tile:{0}_{1}, color: {2}", t.X, t.Y, t.PreTilecolor));
+        if (level.Spread > 0 && level.Spread > -1) {
 
-        Destroy(go);
+            for (int x = 0; x < level.Spread + 1; x++) {
 
-        switch (TilemapCruent[t.X, t.Y].Tilecolor) {
-            case Tile.TileColor.white:
+                if (GetTileAt(t.X + x, t.Y) != null) {
+                    GetTileAt(t.X + x, t.Y).ChangeTileColor(TC);
+                }
+                if (GetTileAt(t.X - x, t.Y) != null) {
+                    GetTileAt(t.X - x, t.Y).ChangeTileColor(TC);
+                }
+                if (GetTileAt(t.X, t.Y + x) != null) {
+                    GetTileAt(t.X, t.Y + x).ChangeTileColor(TC);
+                }
+                if (GetTileAt(t.X, t.Y - x) != null) {
+                    GetTileAt(t.X, t.Y - x).ChangeTileColor(TC);
+                }   
+            }
+        }
+    }
 
-                var goW = Instantiate(TileWhite, new Vector3(t.X, t.Y, 0), Quaternion.identity);
 
-                goW.name = string.Format("Tile:{0}_{1}, color: {2}", t.X, t.Y, t.Tilecolor);
+    public void UpdateTileAt (int x, int y) {
 
+        List<GameObject> go = GoTiles.FindAll((g) => g.transform.position == new Vector3(x,y,0)) ;
+
+        foreach (var g in go) {
+            Debug.LogWarning(g.name);
+
+            GoTiles.Remove(g);
+
+            Destroy(g);
+        }
+
+        switch (level.TileMapCruent[x, y].Tilecolor) {
+            case Tile.TileColor.White:
+
+                var goW = Instantiate(TileBlue, new Vector3(x, y, 0), Quaternion.identity);
+
+                goW.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, GetTileAt(x, y).Tilecolor);
+
+                GoTiles.Add(goW);
                 break;
 
-            case Tile.TileColor.blue:
+            case Tile.TileColor.Blue:
 
-                var goB = Instantiate(TileBlue, new Vector3(t.X, t.Y, 0), Quaternion.identity);
+                var goB = Instantiate(TileBlue, new Vector3(x, y, 0), Quaternion.identity);
 
-                goB.name = string.Format("Tile:{0}_{1}, color: {2}", t.X, t.Y, t.Tilecolor);
+                goB.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, GetTileAt(x, y).Tilecolor);
 
+                GoTiles.Add(goB);
                 break;
 
-            case Tile.TileColor.red:
+            case Tile.TileColor.Red:
 
-                var goR = Instantiate(TileRed, new Vector3(t.X, t.Y, 0), Quaternion.identity);
+                var goR = Instantiate(TileRed, new Vector3(x, y, 0), Quaternion.identity);
 
-                goR.name = string.Format("Tile:{0}_{1}, color: {2}", t.X, t.Y, t.Tilecolor);
+                goR.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, GetTileAt(x, y).Tilecolor);
+
+                GoTiles.Add(goR);
+
+                break;
+            case Tile.TileColor.Yellow:
+
+                var goY = Instantiate(TileYellow, new Vector3(x, y, 0), Quaternion.identity);
+
+                goY.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, GetTileAt(x,y).Tilecolor);
 
                 break;
 
             default:
                 break;
         }
-        CheckLevelComplete();
+
+       
+
+        if (CheckLevelComplete()) {
+            Debug.LogWarning("True");
+        }
     }
 
     public bool CheckLevelComplete () {
@@ -116,7 +183,7 @@ public class TileController : MonoBehaviour {
         for (int x = 0; x < sizex; x++) {
             for (int y = 0; y < sizey; y++) {
 
-                if (TilemapCruent[x, y] != TilemapEnd[x, y]) {
+                if (level.TileMapCruent[x, y].Tilecolor != level.TileMapEnd[x, y].Tilecolor) {
                     return false;
                 }
             }
@@ -141,8 +208,7 @@ public class TileController : MonoBehaviour {
             return null;
         }
 
-        return TilemapCruent[x, y];
-
+        return level.TileMapCruent[x, y];
     }
 
     /// <summary>
@@ -153,12 +219,12 @@ public class TileController : MonoBehaviour {
     /// <returns></returns>
     public Tile GetTileAt (int x, int y) {
 
-        if (x < 0 || y < 0 || y > sizey || x > sizex) {
+        if (x < 0 || y < 0 || y >= sizey || x >= sizex) {
 
             //Debug.LogErrorFormat("GetTile Overflow {0},{1}", x, y);
             return null;
         }
 
-        return TilemapCruent[x, y];
+        return level.TileMapCruent[x, y];
     }
 }
