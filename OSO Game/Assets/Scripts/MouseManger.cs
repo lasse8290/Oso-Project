@@ -43,8 +43,6 @@ public class MouseManger : MonoBehaviour {
 
             if (t != null) {
 
-                Debug.LogWarningFormat("{0},{1} Color: {2} Modifers {3}", t.X, t.Y, t.Tilecolor, t.Tilemodifer);
-
                 switch (tcp) {
                     case TilePlaceMode.none:
 

@@ -6,13 +6,13 @@ public class TileController : MonoBehaviour {
 
     public static TileController Instace { get; set; }
 
-    [SerializeField]
-    int sp = 0;
-
     public GameObject TileWhite;
     public GameObject TileBlue;
     public GameObject TileRed;
     public GameObject TileYellow;
+
+    public GameObject TileSpreadPlus;
+    public GameObject TileSpreadMinus;
 
     List<GameObject> GoTiles = new List<GameObject>();
 
@@ -40,8 +40,6 @@ public class TileController : MonoBehaviour {
 
         level = new Level(LevelToLoad);
 
-        sp = level.Spread;
-
         sizex = level.TileMapCruent.GetLength(0);
         sizey = level.TileMapCruent.GetLength(1);
 
@@ -50,6 +48,7 @@ public class TileController : MonoBehaviour {
             for (int y = 0; y < level.TileMapCruent.GetLength(1); y++) {
 
                 switch (level.TileMapCruent[x, y].Tilecolor) {
+
                     case Tile.TileColor.White:
 
                         var goW = Instantiate(TileWhite, new Vector3(x, y, 0), Quaternion.identity);
@@ -113,7 +112,7 @@ public class TileController : MonoBehaviour {
                 }
                 if (GetTileAt(t.X, t.Y - x) != null) {
                     GetTileAt(t.X, t.Y - x).ChangeTileColor(TC);
-                }   
+                }
             }
         }
     }
@@ -121,10 +120,9 @@ public class TileController : MonoBehaviour {
 
     public void UpdateTileAt (int x, int y) {
 
-        List<GameObject> go = GoTiles.FindAll((g) => g.transform.position == new Vector3(x,y,0)) ;
+        List<GameObject> go = GoTiles.FindAll((g) => g.transform.position == new Vector3(x, y, 0));
 
         foreach (var g in go) {
-            Debug.LogWarning(g.name);
 
             GoTiles.Remove(g);
 
@@ -163,15 +161,14 @@ public class TileController : MonoBehaviour {
 
                 var goY = Instantiate(TileYellow, new Vector3(x, y, 0), Quaternion.identity);
 
-                goY.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, GetTileAt(x,y).Tilecolor);
+                goY.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, GetTileAt(x, y).Tilecolor);
 
+                GoTiles.Add(goY);
                 break;
 
             default:
                 break;
         }
-
-       
 
         if (CheckLevelComplete()) {
             Debug.LogWarning("True");
