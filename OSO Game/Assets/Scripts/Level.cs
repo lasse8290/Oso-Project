@@ -27,7 +27,7 @@ public class Level {
             //Start Modifer and Tiles 0
             new List<List<string>> {
 
-                new List<string>{"1"},          //Spread      
+                new List<string>{"0"},          //Spread      
                 new List<string>{"1","1", "1"}  //Blue, Red, Yellow
 
             },

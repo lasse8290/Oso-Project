@@ -104,12 +104,18 @@ public class TileController : MonoBehaviour {
                     case Tile.TileModifer.None:
                         break;
                     case Tile.TileModifer.BiggerSpread:
-                        var goSB = Instantiate (TileSpreadPlus, new Vector3(x + 0.4f, y + 0.4f, 0), Quaternion.identity);
+                        var goSB = Instantiate (TileSpreadPlus, new Vector3(x + 0.4f, y + 0.4f, -0.1f), Quaternion.identity);
+
+                        goSB.name = string.Format("SpreadPlus{0},{1}", x, y);
 
                         GoModifers.Add(goSB);
+
+
                         break;
                     case Tile.TileModifer.SmallSpread:
-                        var goSS = Instantiate(TileSpreadMinus, new Vector3(x, y, 0), Quaternion.identity);
+                        var goSS = Instantiate(TileSpreadMinus, new Vector3(x + 0.4f, y + 0.4f, -0.1f), Quaternion.identity);
+
+                        goSS.name = string.Format("SpreadMinus{0},{1}", x, y);
 
                         GoModifers.Add(goSS);
                         break;
@@ -147,7 +153,7 @@ public class TileController : MonoBehaviour {
 
     public void UpdateTileAt (int x, int y) {
 
-        foreach (var g in GoModifers.FindAll((g) => g.transform.position == new Vector3(x + 0.4f, y + 0.4f, 0))) {
+        foreach (var g in GoModifers.FindAll((g) => g.transform.position == new Vector3(x + 0.4f, y + 0.4f, -0.1f))) {
 
             Debug.LogWarning(g);
 
