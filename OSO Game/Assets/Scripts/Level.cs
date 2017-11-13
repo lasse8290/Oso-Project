@@ -42,15 +42,16 @@ public class Level {
                 new List<string> {"W","W","W","W","W"}
 
             },
-                
+
             //Level Tile Modifers 2
+            // Valid tokens No, BS, SS
             new List<List<string>> {
 
-                new List<string>{"None","None","None","None","None"},
-                new List<string>{"None","None","None","None","None"},
-                new List<string>{"None","None","None","None","None"},
-                new List<string>{"None","None","None","None","None"},
-                new List<string>{"None","None","None","None","None"}
+                new List<string>{ "No", "No", "No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No"},
+                new List<string>{ "No", "No", "BS", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No" }
 
             },
 
@@ -123,13 +124,13 @@ public class Level {
             for (int y = 0; y < Modifers[0].Count; y++) {
 
                 switch (Modifers[x][y]) {
-                    case "None":
+                    case "No":
                         Tillemodifermap[x, y] = Tile.TileModifer.None;
                         break;
-                    case "BiggerSpread":
+                    case "BS":
                         Tillemodifermap[x, y] = Tile.TileModifer.BiggerSpread;
                         break;
-                    case "SmallSpread":
+                    case "SS":
                         Tillemodifermap[x, y] = Tile.TileModifer.SmallSpread;
                         break;
                     default:

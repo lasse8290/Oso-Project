@@ -519,10 +519,14 @@ MonoBehaviour:
   TileBlue: {fileID: 1132900466496336, guid: 38b19a561e667154abfd219b6ab1c979, type: 2}
   TileRed: {fileID: 1364261793701932, guid: a467e0392a52bcc449eaf76916ee69f4, type: 2}
   TileYellow: {fileID: 1774434195590666, guid: 5fbd248ed083b734f8105ad7b74c7b57, type: 2}
-  TileSpreadPlus: {fileID: 1197684262961626, guid: ee786a2252de71f468dbb4bda166d39a,
+  TilePurple: {fileID: 1020380627457916, guid: 3870aaaad353d594c9f336637c56cf70, type: 2}
+  TileOrange: {fileID: 1171296911698020, guid: 21878b261529d3c4681697386882e69d, type: 2}
+  TileGreen: {fileID: 1976773666620942, guid: f2f27812a65514346b435a51e6bff4c8, type: 2}
+  TileSpreadPlus: {fileID: 1485346512476080, guid: 29b6bcd8b3878eb42ba05006cf25bc3f,
     type: 2}
-  TileSpreadMinus: {fileID: 1515556865089640, guid: 1efe94b158ef4364b94d668839466751,
+  TileSpreadMinus: {fileID: 1104756656295388, guid: ef5913eba645cf64a8c22cde2adf3f79,
     type: 2}
+  Spead: 0
 --- !u!1 &1139760202
 GameObject:
   m_ObjectHideFlags: 0

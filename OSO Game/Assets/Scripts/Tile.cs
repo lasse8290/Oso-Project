@@ -34,9 +34,14 @@ public class Tile {
 
     public enum TileColor {
         White,
+
         Blue,
         Red,
-        Yellow
+        Yellow,
+
+        Purple,
+        Orange,
+        Green,
     }
 
     TileColor Tc = TileColor.White;
