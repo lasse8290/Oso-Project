@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4211993598914750}
   - component: {fileID: 212556381651963888}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TilebaseYellow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
