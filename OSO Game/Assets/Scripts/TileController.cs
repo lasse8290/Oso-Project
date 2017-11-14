@@ -15,6 +15,8 @@ public class TileController : MonoBehaviour {
     public GameObject TileOrange;
     public GameObject TileGreen;
 
+    public GameObject TileBlack;
+
     public GameObject TileSpreadPlus;
     public GameObject TileSpreadMinus;
 
@@ -22,6 +24,8 @@ public class TileController : MonoBehaviour {
     List<GameObject> GoModifers = new List<GameObject>();
 
     Level level;
+
+    public Level Level { get { return level; } }
 
     [SerializeField]
     public int Spead;
@@ -104,7 +108,7 @@ public class TileController : MonoBehaviour {
                     case Tile.TileModifer.None:
                         break;
                     case Tile.TileModifer.BiggerSpread:
-                        var goSB = Instantiate (TileSpreadPlus, new Vector3(x + 0.4f, y + 0.4f, -0.1f), Quaternion.identity);
+                        var goSB = Instantiate (TileSpreadPlus, new Vector3(x + 0.5f, y + 0.5f, -0.1f), Quaternion.identity);
 
                         goSB.name = string.Format("SpreadPlus{0},{1}", x, y);
 
@@ -113,7 +117,7 @@ public class TileController : MonoBehaviour {
 
                         break;
                     case Tile.TileModifer.SmallSpread:
-                        var goSS = Instantiate(TileSpreadMinus, new Vector3(x + 0.4f, y + 0.4f, -0.1f), Quaternion.identity);
+                        var goSS = Instantiate(TileSpreadMinus, new Vector3(x + 0.5f, y + 0.5f, -0.1f), Quaternion.identity);
 
                         goSS.name = string.Format("SpreadMinus{0},{1}", x, y);
 
@@ -153,9 +157,7 @@ public class TileController : MonoBehaviour {
 
     public void UpdateTileAt (int x, int y) {
 
-        foreach (var g in GoModifers.FindAll((g) => g.transform.position == new Vector3(x + 0.4f, y + 0.4f, -0.1f))) {
-
-            Debug.LogWarning(g);
+        foreach (var g in GoModifers.FindAll((g) => g.transform.position == new Vector3(x + 0.5f, y + 0.5f, -0.1f))) {
 
             GoModifers.Remove(g);
 
@@ -189,7 +191,7 @@ public class TileController : MonoBehaviour {
         switch (level.TileMapCruent[x, y].Tilecolor) {
             case Tile.TileColor.White:
 
-                var goW = Instantiate(TileBlue, new Vector3(x, y, 0), Quaternion.identity);
+                var goW = Instantiate(TileWhite, new Vector3(x, y, 0), Quaternion.identity);
 
                 goW.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, GetTileAt(x, y).Tilecolor);
 
@@ -248,6 +250,15 @@ public class TileController : MonoBehaviour {
                 goO.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, GetTileAt(x, y).Tilecolor);
 
                 GoTiles.Add(goO);
+                break;
+
+            case Tile.TileColor.Black:
+
+                var goBl = Instantiate(TileBlack, new Vector3(x, y, 0), Quaternion.identity);
+
+                goBl.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, GetTileAt(x, y).Tilecolor);
+
+                GoTiles.Add(goBl);
                 break;
 
             default:
@@ -315,62 +326,79 @@ public class TileController : MonoBehaviour {
             return TC2;
         }
 
-        if (TC2 == Tile.TileColor.White) {
+        else if (TC2 == Tile.TileColor.White) {
             Debug.Log(TC1 + "," + TC2 + "=" + TC1);
             return TC1;
         }
 
-        if (TC1 == TC2) {
+        else if (TC1 == TC2) {
             return TC1;
         }
 
-        if (TC1 == Tile.TileColor.Blue && TC2 == Tile.TileColor.Red || TC2 == Tile.TileColor.Blue && TC1 == Tile.TileColor.Red) {
+        else if (TC1 == Tile.TileColor.Blue && TC2 == Tile.TileColor.Red || TC2 == Tile.TileColor.Blue && TC1 == Tile.TileColor.Red) {
             Debug.Log(TC1 + "," + TC2 + "= Blue");
             return Tile.TileColor.Purple;
         }
 
-        if (TC1 == Tile.TileColor.Yellow && TC2 == Tile.TileColor.Red || TC2 == Tile.TileColor.Yellow && TC1 == Tile.TileColor.Red) {
+        else if (TC1 == Tile.TileColor.Yellow && TC2 == Tile.TileColor.Red || TC2 == Tile.TileColor.Yellow && TC1 == Tile.TileColor.Red) {
             Debug.Log(TC1 + "," + TC2 + "= Orange");
             return Tile.TileColor.Orange;
         }
 
-        if (TC1 == Tile.TileColor.Yellow && TC2 == Tile.TileColor.Blue || TC2 == Tile.TileColor.Yellow && TC1 == Tile.TileColor.Blue) {
+        else if (TC1 == Tile.TileColor.Yellow && TC2 == Tile.TileColor.Blue || TC2 == Tile.TileColor.Yellow && TC1 == Tile.TileColor.Blue) {
             Debug.Log(TC1 + "," + TC2 + "= Green");
             return Tile.TileColor.Green;
         }
 
-        if (TC1 == Tile.TileColor.Purple && TC2 == Tile.TileColor.Red || TC2 == Tile.TileColor.Purple && TC1 == Tile.TileColor.Red) {
+        else if (TC1 == Tile.TileColor.Purple && TC2 == Tile.TileColor.Red || TC2 == Tile.TileColor.Purple && TC1 == Tile.TileColor.Red) {
             Debug.Log(TC1 + "," + TC2 + "= Red");
             return Tile.TileColor.Red;
         }
 
-        if (TC1 == Tile.TileColor.Purple && TC2 == Tile.TileColor.Blue || TC2 == Tile.TileColor.Purple && TC1 == Tile.TileColor.Red) {
+        else if (TC1 == Tile.TileColor.Purple && TC2 == Tile.TileColor.Blue || TC2 == Tile.TileColor.Purple && TC1 == Tile.TileColor.Red) {
             Debug.Log(TC1 + "," + TC2 + "= Blue");
             return Tile.TileColor.Blue;
         }
 
-        if (TC1 == Tile.TileColor.Yellow && TC2 == Tile.TileColor.Green || TC2 == Tile.TileColor.Yellow && TC1 == Tile.TileColor.Green) {
+        else if (TC1 == Tile.TileColor.Yellow && TC2 == Tile.TileColor.Green || TC2 == Tile.TileColor.Yellow && TC1 == Tile.TileColor.Green) {
             Debug.Log(TC1 + "," + TC2 + "= Yellow");
             return Tile.TileColor.Yellow;
         }
 
-        if (TC1 == Tile.TileColor.Green && TC2 == Tile.TileColor.Blue || TC2 == Tile.TileColor.Green && TC1 == Tile.TileColor.Blue) {
+        else if (TC1 == Tile.TileColor.Green && TC2 == Tile.TileColor.Blue || TC2 == Tile.TileColor.Green && TC1 == Tile.TileColor.Blue) {
             Debug.Log(TC1 + "," + TC2 + "= Blue");
             return Tile.TileColor.Blue;
         }
 
-        if (TC1 == Tile.TileColor.Yellow && TC2 == Tile.TileColor.Orange || TC2 == Tile.TileColor.Yellow && TC1 == Tile.TileColor.Orange) {
+        else if (TC1 == Tile.TileColor.Yellow && TC2 == Tile.TileColor.Orange || TC2 == Tile.TileColor.Yellow && TC1 == Tile.TileColor.Orange) {
             Debug.Log(TC1 + "," + TC2 + "= Yellow");
             return Tile.TileColor.Yellow;
         }
 
-        if (TC1 == Tile.TileColor.Orange && TC2 == Tile.TileColor.Red || TC2 == Tile.TileColor.Orange && TC1 == Tile.TileColor.Red) {
+        else if (TC1 == Tile.TileColor.Orange && TC2 == Tile.TileColor.Red || TC2 == Tile.TileColor.Orange && TC1 == Tile.TileColor.Red) {
             Debug.Log(TC1 + "," + TC2 + "= Red");
             return Tile.TileColor.Red;
         }
 
-        Debug.LogError(TC1 + "," + TC2 + "= No valid Color Combo");
-        return Tile.TileColor.White;
+        else if (TC1 == Tile.TileColor.Purple && TC2 == Tile.TileColor.Orange || TC2 == Tile.TileColor.Purple && TC1 == Tile.TileColor.Orange) {
+            Debug.Log(TC1 + "," + TC2 + "= Black");
+            return Tile.TileColor.Black;
+        }
+
+        else if (TC1 == Tile.TileColor.Purple && TC2 == Tile.TileColor.Green || TC2 == Tile.TileColor.Purple && TC1 == Tile.TileColor.Green) {
+            Debug.Log(TC1 + "," + TC2 + "= Black");
+            return Tile.TileColor.Black;
+        }
+
+        else if (TC1 == Tile.TileColor.Orange && TC2 == Tile.TileColor.Green || TC2 == Tile.TileColor.Orange && TC1 == Tile.TileColor.Green) {
+            Debug.Log(TC1 + "," + TC2 + "= Black");
+            return Tile.TileColor.Black;
+        }
+        else {
+
+            Debug.LogWarning(TC1 + "," + TC2 + "= No valid Color Combo");
+
+            return Tile.TileColor.Black;
+        }
     }
-
 }

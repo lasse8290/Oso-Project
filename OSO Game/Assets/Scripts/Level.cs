@@ -9,6 +9,9 @@ public class Level {
     //Modifers
     //How far a tile will spread
     public int Spread = 0;
+    
+    //make tiles white
+    public int Bombs = 0;
 
     public int TileBlue = 0;
     public int TileRed = 0;
@@ -27,7 +30,7 @@ public class Level {
             //Start Modifer and Tiles 0
             new List<List<string>> {
 
-                new List<string>{"0"},          //Spread      
+                new List<string>{"1","1"},          //Spread      
                 new List<string>{"1","1", "1"}  //Blue, Red, Yellow
 
             },
@@ -76,6 +79,8 @@ public class Level {
 
         //Set the modifer(s)
         Spread = int.Parse(StartModifers[0]);
+
+        Bombs = int.Parse(StartModifers[1]);
 
         List<string> StartTiles = lev[0][1];
 
