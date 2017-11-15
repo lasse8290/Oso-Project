@@ -15,6 +15,9 @@ public class InLevelManger : MonoBehaviour {
     Texture2D Tx2d;
 
     [SerializeField]
+    private Text SpeadCount = null;
+
+    [SerializeField]
     private Text ChangeToBlue = null;
 
     [SerializeField]
@@ -37,6 +40,7 @@ public class InLevelManger : MonoBehaviour {
 
         if (TileController.Instace.Level != null) {
 
+            SpeadCount.text = TileController.Instace.Level.Spread.ToString();
             ChangeToBlue.text = TileController.Instace.Level.TileBlue.ToString();
             ChangeToRed.text = TileController.Instace.Level.TileRed.ToString();
             ChangeToYellow.text = TileController.Instace.Level.TileYellow.ToString();

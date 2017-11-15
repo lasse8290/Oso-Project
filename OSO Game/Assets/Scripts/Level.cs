@@ -20,7 +20,12 @@ public class Level {
     public Tile[,] TileMapCruent;
     public Tile[,] TileMapEnd;
 
-    //B = blue R = Red Y = Yellow
+    public int LevelCount { get {
+
+            return levels.Count;
+        } }
+
+    //B = blue R = Red Y = Yellow  P = Purple O = Orange G = Green  Bl = Black
 
     List<List<List<List<string>>>> levels = new List<List<List<List<string>>>> {
 
@@ -30,8 +35,8 @@ public class Level {
             //Start Modifer and Tiles 0
             new List<List<string>> {
 
-                new List<string>{"1","1"},          //Spread      
-                new List<string>{"1","1", "1"}  //Blue, Red, Yellow
+                new List<string>{"0","1"},          //Spread      
+                new List<string>{"2","2", "2"}  //Blue, Red, Yellow
 
             },
 
@@ -113,6 +118,19 @@ public class Level {
                     case "Y":
                         Tilecolormap[x, y] = Tile.TileColor.Yellow;
                         break;
+                    case "P":
+                        Tilecolormap[x, y] = Tile.TileColor.Purple;
+                        break;
+                    case "O":
+                        Tilecolormap[x, y] = Tile.TileColor.Orange;
+                        break;
+                    case "G":
+                        Tilecolormap[x, y] = Tile.TileColor.Purple;
+                        break;
+                    case "BL":
+                        Tilecolormap[x, y] = Tile.TileColor.Black;
+                        break;
+
                     default:
                         Debug.LogError("Invalid String token:" + mapstart[x][y]);
                         break;
@@ -137,6 +155,12 @@ public class Level {
                         break;
                     case "SS":
                         Tillemodifermap[x, y] = Tile.TileModifer.SmallSpread;
+                        break;
+                    case "MB":
+                        Tillemodifermap[x, y] = Tile.TileModifer.MoreBombs;
+                        break;
+                    case "LB":
+                        Tillemodifermap[x, y] = Tile.TileModifer.LessBomb;
                         break;
                     default:
                         Debug.LogError("Invalid String token:" + Modifers[x][y]);
@@ -179,6 +203,20 @@ public class Level {
                     case "Y":
                         TileMapEnd[x, y] = new Tile(x, y, Tile.TileColor.Yellow);
                         break;
+                    case "P":
+                        TileMapEnd[x, y] = new Tile(x, y, Tile.TileColor.Yellow);
+                        break;
+                    case "O":
+                        TileMapEnd[x, y] = new Tile(x, y, Tile.TileColor.Yellow);
+                        break;
+                    case "G":
+                        TileMapEnd[x, y] = new Tile(x, y, Tile.TileColor.Yellow);
+                        break;
+                    case "BL":
+                        TileMapEnd[x, y] = new Tile(x, y, Tile.TileColor.Yellow);
+                        break;
+
+
                     default:
                         Debug.LogError("Invalid String token:" + TileMapEnd[x, y]);
                         break;

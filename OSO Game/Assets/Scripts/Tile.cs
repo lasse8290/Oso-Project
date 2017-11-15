@@ -14,7 +14,9 @@ public class Tile {
     public enum TileModifer {
         None,
         BiggerSpread,
-        SmallSpread   
+        SmallSpread,
+        MoreBombs,
+        LessBomb
     }
 
     public TileModifer tm = TileModifer.None;
