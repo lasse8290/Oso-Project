@@ -44,11 +44,7 @@ public class TileController : MonoBehaviour {
 
     }
 
-    private void Start () {
-        GenLevel(0);
-    }
-
-    void GenLevel (int LevelToLoad) {
+    public void GenLevel (int LevelToLoad) {
 
         level = new Level(LevelToLoad);
 

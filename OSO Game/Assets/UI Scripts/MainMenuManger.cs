@@ -1,16 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class MainMenuManger : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public void Loadlevel(int lev) {
+
+        DontDestroyOnLoad(this);
+
+        SceneManager.UnloadSceneAsync(0);
+
+        SceneManager.LoadSceneAsync(lev, LoadSceneMode.Single);
+
+        //GameObject.Find("GameManger").GetComponent<TileController>().GenLevel(lev);
+    }
+
+    public void ExitApp () {
+        Application.Quit();
+    }
 }
