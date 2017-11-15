@@ -7,6 +7,14 @@ using UnityEngine.UI;
 public class InLevelManger : MonoBehaviour {
 
     [SerializeField]
+    GameObject SpeadCounter;
+
+    [SerializeField]
+    Sprite Sp;
+
+    Texture2D Tx2d;
+
+    [SerializeField]
     private Text ChangeToBlue = null;
 
     [SerializeField]
@@ -18,11 +26,21 @@ public class InLevelManger : MonoBehaviour {
     [SerializeField]
     private Text ChangeToBomb = null;
 
+    private void Awake () {
+
+        Tx2d = Sp.texture;
+
+        SpeadCounter.GetComponent<RawImage>().texture = Tx2d;
+    }
+
     private void OnGUI () {
-        ChangeToBlue.text = TileController.Instace.Level.TileBlue.ToString();
-        ChangeToRed.text = TileController.Instace.Level.TileRed.ToString();
-        ChangeToYellow.text = TileController.Instace.Level.TileYellow.ToString();
-        ChangeToBomb.text = TileController.Instace.Level.Bombs.ToString();
-       
+
+        if (TileController.Instace.Level != null) {
+
+            ChangeToBlue.text = TileController.Instace.Level.TileBlue.ToString();
+            ChangeToRed.text = TileController.Instace.Level.TileRed.ToString();
+            ChangeToYellow.text = TileController.Instace.Level.TileYellow.ToString();
+            ChangeToBomb.text = TileController.Instace.Level.Bombs.ToString();
+        }
     }
 }
