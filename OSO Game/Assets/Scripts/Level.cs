@@ -35,7 +35,7 @@ public class Level {
             //Start Modifer and Tiles 0
             new List<List<string>> {
 
-                new List<string>{"0","1"},          //Spread      
+                new List<string>{"0","1"},      //Spread, Bombs      
                 new List<string>{"2","2", "2"}  //Blue, Red, Yellow
 
             },
@@ -52,7 +52,7 @@ public class Level {
             },
 
             //Level Tile Modifers 2
-            // Valid tokens No, BS, SS
+            // Valid tokens No, BS, SS, MB, LB
             new List<List<string>> {
 
                 new List<string>{ "No", "No", "No", "No", "No"},
@@ -66,11 +66,11 @@ public class Level {
             //Level End 3
             new List<List<string>> {
 
-                new List<string>{"W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W"}
+                new List<string>{"B","P","W","W","W"},
+                new List<string>{"P","R","R","W","W"},
+                new List<string>{"W","R","R","R","R"},
+                new List<string>{"W","W","W","R","P"},
+                new List<string>{"W","W","W","P","B"}
 
             }
         }
@@ -189,7 +189,7 @@ public class Level {
         for (int x = 0; x < TileMapEnd.GetLength(0); x++) {
             for (int y = 0; y < TileMapEnd.GetLength(1); y++) {
 
-                switch (mapend[x][y]) {
+                switch (mapend[y][x]) {
 
                     case "W":
                         TileMapEnd[x, y] = new Tile(x, y, Tile.TileColor.White);
@@ -204,16 +204,16 @@ public class Level {
                         TileMapEnd[x, y] = new Tile(x, y, Tile.TileColor.Yellow);
                         break;
                     case "P":
-                        TileMapEnd[x, y] = new Tile(x, y, Tile.TileColor.Yellow);
+                        TileMapEnd[x, y] = new Tile(x, y, Tile.TileColor.Purple);
                         break;
                     case "O":
-                        TileMapEnd[x, y] = new Tile(x, y, Tile.TileColor.Yellow);
+                        TileMapEnd[x, y] = new Tile(x, y, Tile.TileColor.Orange);
                         break;
                     case "G":
-                        TileMapEnd[x, y] = new Tile(x, y, Tile.TileColor.Yellow);
+                        TileMapEnd[x, y] = new Tile(x, y, Tile.TileColor.Green);
                         break;
                     case "BL":
-                        TileMapEnd[x, y] = new Tile(x, y, Tile.TileColor.Yellow);
+                        TileMapEnd[x, y] = new Tile(x, y, Tile.TileColor.Black);
                         break;
 
 

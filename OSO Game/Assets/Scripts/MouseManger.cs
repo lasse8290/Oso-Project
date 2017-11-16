@@ -50,26 +50,42 @@ public class MouseManger : MonoBehaviour {
 
                 switch (tcp) {
                     case TilePlaceMode.none:
-
                         break;
 
                     case TilePlaceMode.Bomb:
 
                         TileController.Instace.PlaceBombAt(t);
 
+                        TileController.Instace.Level.Bombs--;
+
                         break;
 
                     case TilePlaceMode.blue:
-                        TileController.Instace.PlaceTileAt(t, Tile.TileColor.Blue);
+                        if (TileController.Instace.Level.TileBlue > 0) {
+
+                            TileController.Instace.PlaceTileAt(t, Tile.TileColor.Blue);
+
+                            TileController.Instace.Level.TileBlue--;
+                        }
                         break;
 
                     case TilePlaceMode.red:
-                        TileController.Instace.PlaceTileAt(t, Tile.TileColor.Red);
+                        if (TileController.Instace.Level.TileRed > 0) {
+
+                            TileController.Instace.PlaceTileAt(t, Tile.TileColor.Red);
+
+                            TileController.Instace.Level.TileRed--;
+                        }
                         break;
 
                     case TilePlaceMode.yellow:
-                        TileController.Instace.PlaceTileAt(t, Tile.TileColor.Yellow);
-                        break;
+                        if (TileController.Instace.Level.TileYellow > 0) {
+
+                            TileController.Instace.PlaceTileAt(t, Tile.TileColor.Yellow);
+
+                            TileController.Instace.Level.TileYellow--;
+                        }
+                            break;
 
                     default:
                         break;

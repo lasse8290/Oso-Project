@@ -137,7 +137,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 17655464}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -299.52, y: -233.95999, z: 0}
+  m_LocalPosition: {x: -194.52, y: -139.45999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1937552928}
@@ -401,7 +401,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 543302969}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -222.5, y: -233.95999, z: 0}
+  m_LocalPosition: {x: -117.5, y: -139.45999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 19702498}
@@ -523,7 +523,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 642838815}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -145.6, y: -233.95999, z: 0}
+  m_LocalPosition: {x: -40.60001, y: -139.45999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2011601644}
@@ -734,7 +734,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 113fddd3555e5f14cbd2bcf0cd5a94a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Debugmode: 1
+  Debugmode: 0
   DebugLevelIndex: 0
   TileWhite: {fileID: 1427579041493296, guid: 8ef458e779c64c74ea00f99a853992ae, type: 2}
   TileBlue: {fileID: 1132900466496336, guid: 38b19a561e667154abfd219b6ab1c979, type: 2}
@@ -748,8 +748,8 @@ MonoBehaviour:
     type: 2}
   TileSpreadMinus: {fileID: 1104756656295388, guid: ef5913eba645cf64a8c22cde2adf3f79,
     type: 2}
-  BombPlus: {fileID: 0}
-  BombMinus: {fileID: 0}
+  BombPlus: {fileID: 1288107549195066, guid: 21442f12f0bd27e4997b0ff7c42b0207, type: 2}
+  BombMinus: {fileID: 1156020231304482, guid: d691f97950b801642af518c41c7be0fd, type: 2}
   Spead: 0
 --- !u!1 &856109457
 GameObject:
@@ -807,7 +807,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 856109457}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -307, y: 244.8, z: 0}
+  m_LocalPosition: {x: -202, y: 150.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 907712321}
@@ -1064,7 +1064,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1332462229}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 339, y: 267.5, z: 0}
+  m_LocalPosition: {x: 234, y: 173, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 17655465}
@@ -1233,7 +1233,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1757062698}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 253, y: -233.5, z: 0}
+  m_LocalPosition: {x: 148, y: -139, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 658857082}
@@ -1283,7 +1283,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1757062701}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 719971083}
+        m_MethodName: Chageview
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1757062701
@@ -1344,7 +1355,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1867241717}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -68, y: -233.5, z: 0}
+  m_LocalPosition: {x: 37, y: -139, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 374349768}

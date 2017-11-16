@@ -10,7 +10,7 @@ public class CameraManger : MonoBehaviour {
 
         Cam = GameObject.FindGameObjectWithTag("MainCamera");
 
-        Cam.transform.position = new Vector3((TileController.Instace.SizeX + 1) / 2, (TileController.Instace.SizeY + 1) / 2, -10f);
+        Cam.transform.position = new Vector3((TileController.Instace.SizeX / 2), (TileController.Instace.SizeY / 2), -10f);
 
     }
 }

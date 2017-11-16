@@ -83,15 +83,25 @@ public class TileController : MonoBehaviour {
 
         if (speadadd > 0) {
             level.Spread += speadadd;
+            speadadd = 0;
         }
         if (bombadd > 0) {
             level.Bombs += bombadd;
+            bombadd = 0;
         }
     }
+
 
     public void GenLevel (int LevelToLoad) {
 
         level = new Level(LevelToLoad);
+
+        for (int x = 0; x < level.TileMapEnd.GetLength(0); x++) {
+            for (int y = 0; y < level.TileMapEnd.GetLength(1); y++) {
+
+                Debug.Log(x +"," + y +":" + level.TileMapEnd[x,y].Tilecolor);
+            }
+        }
 
         Spead = level.Spread;
 
@@ -99,6 +109,9 @@ public class TileController : MonoBehaviour {
         sizey = level.TileMapCruent.GetLength(1);
 
         SpawnCruentMapTiles();
+        SpawnEndMapTiles();
+
+        Chageview();
     }
 
 
@@ -127,6 +140,7 @@ public class TileController : MonoBehaviour {
 
         ShowCruentTile = !ShowCruentTile;
     }
+
 
     public void SpawnCruentMapTiles () {
 
@@ -291,7 +305,7 @@ public class TileController : MonoBehaviour {
 
                         var goW = Instantiate(TileWhite, new Vector3(x, y, 0), Quaternion.identity);
 
-                        goW.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, GetTileAt(x, y).Tilecolor);
+                        goW.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, level.TileMapEnd[x, y].Tilecolor);
 
                         GoEndTiles.Add(goW);
 
@@ -303,7 +317,7 @@ public class TileController : MonoBehaviour {
 
                         var goB = Instantiate(TileBlue, new Vector3(x, y, 0), Quaternion.identity);
 
-                        goB.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, GetTileAt(x, y).Tilecolor);
+                        goB.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, level.TileMapEnd[x, y].Tilecolor);
 
                         GoEndTiles.Add(goB);
 
@@ -315,7 +329,7 @@ public class TileController : MonoBehaviour {
 
                         var goR = Instantiate(TileRed, new Vector3(x, y, 0), Quaternion.identity);
 
-                        goR.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, GetTileAt(x, y).Tilecolor);
+                        goR.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, level.TileMapEnd[x, y].Tilecolor);
 
                         GoEndTiles.Add(goR);
 
@@ -326,7 +340,7 @@ public class TileController : MonoBehaviour {
 
                         var goY = Instantiate(TileYellow, new Vector3(x, y, 0), Quaternion.identity);
 
-                        goY.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, GetTileAt(x, y).Tilecolor);
+                        goY.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, level.TileMapEnd[x, y].Tilecolor);
 
                         GoEndTiles.Add(goY);
 
@@ -338,7 +352,7 @@ public class TileController : MonoBehaviour {
 
                         var goP = Instantiate(TilePurple, new Vector3(x, y, 0), Quaternion.identity);
 
-                        goP.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, GetTileAt(x, y).Tilecolor);
+                        goP.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, level.TileMapEnd[x, y].Tilecolor);
 
                         GoEndTiles.Add(goP);
 
@@ -350,7 +364,7 @@ public class TileController : MonoBehaviour {
 
                         var goG = Instantiate(TileGreen, new Vector3(x, y, 0), Quaternion.identity);
 
-                        goG.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, GetTileAt(x, y).Tilecolor);
+                        goG.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, level.TileMapEnd[x, y].Tilecolor);
 
                         GoEndTiles.Add(goG);
 
@@ -362,7 +376,7 @@ public class TileController : MonoBehaviour {
 
                         var goO = Instantiate(TileOrange, new Vector3(x, y, 0), Quaternion.identity);
 
-                        goO.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, GetTileAt(x, y).Tilecolor);
+                        goO.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, level.TileMapEnd[x, y].Tilecolor);
 
                         GoEndTiles.Add(goO);
 
@@ -374,7 +388,7 @@ public class TileController : MonoBehaviour {
 
                         var goBl = Instantiate(TileBlack, new Vector3(x, y, 0), Quaternion.identity);
 
-                        goBl.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, GetTileAt(x, y).Tilecolor);
+                        goBl.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, level.TileMapEnd[x, y].Tilecolor);
 
                         GoEndTiles.Add(goBl);
 
@@ -468,22 +482,22 @@ public class TileController : MonoBehaviour {
             case Tile.TileModifer.None:
                 break;
             case Tile.TileModifer.BiggerSpread:
-                level.Spread++;
+                speadadd++;
                 level.TileMapCruent[x, y].ChangeTileModifer(Tile.TileModifer.None);
 
                 break;
             case Tile.TileModifer.SmallSpread:
-                level.Spread--;
+                speadadd--;
                 level.TileMapCruent[x, y].ChangeTileModifer(Tile.TileModifer.None);
                 break;
 
             case Tile.TileModifer.MoreBombs:
-                level.Bombs++;
+                bombadd++;
                 level.TileMapCruent[x, y].ChangeTileModifer(Tile.TileModifer.None);
 
                 break;
             case Tile.TileModifer.LessBomb:
-                level.Bombs--;
+                bombadd--;
                 level.TileMapCruent[x, y].ChangeTileModifer(Tile.TileModifer.None);
                 break;
             default:
@@ -590,8 +604,7 @@ public class TileController : MonoBehaviour {
                 break;
         }
 
-        if (CheckLevelComplete()) {
-        }
+        Debug.Log(CheckLevelComplete());
     }
 
     public bool CheckLevelComplete () {
@@ -644,7 +657,6 @@ public class TileController : MonoBehaviour {
 
         return level.TileMapCruent[x, y];
     }
-
 
     public Tile.TileColor ColorCalutor (Tile.TileColor TC1, Tile.TileColor TC2) {
 
