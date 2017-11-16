@@ -1,13 +1,9 @@
 fileFormatVersion: 2
-guid: 0f688f16da07762458ba10f5ef2c376f
-timeCreated: 1510670832
+guid: 76b08be1a3f376c438d2c576b53715b5
+timeCreated: 1510761094
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: SpeadPlus
-    21300002: SpeadMinus
-    21300004: OSOGameSprites 1_2
-    21300006: OSOGameSprites 1_3
+  fileIDToRecycleName: {}
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -35,7 +31,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: -1
     aniso: -1
     mipBias: -1
     wrapU: 1
@@ -44,13 +40,13 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 200
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -125,63 +121,7 @@ TextureImporter:
     overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: SpeadPlus
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 232
-        width: 24
-        height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: SpeadMinus
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 232
-        width: 24
-        height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: OSOGameSprites 1_2
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 232
-        width: 24
-        height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: OSOGameSprites 1_3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 232
-        width: 24
-        height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
+    sprites: []
     outline: []
     physicsShape: []
   spritePackingTag: 

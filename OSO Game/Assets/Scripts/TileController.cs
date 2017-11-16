@@ -6,6 +6,16 @@ public class TileController : MonoBehaviour {
 
     public static TileController Instace { get; set; }
 
+    [SerializeField]
+    bool Debugmode = false;
+
+    [SerializeField]
+    int DebugLevelIndex;
+
+    bool PlaceingTiles = false;
+
+    bool ShowCruentTile = true;
+
     public GameObject TileWhite;
     public GameObject TileBlue;
     public GameObject TileRed;
@@ -20,7 +30,13 @@ public class TileController : MonoBehaviour {
     public GameObject TileSpreadPlus;
     public GameObject TileSpreadMinus;
 
-    List<GameObject> GoTiles = new List<GameObject>();
+    public GameObject BombPlus;
+    public GameObject BombMinus;
+
+    GameObject Parent;
+
+    List<GameObject> GoCruentTiles = new List<GameObject>();
+    List<GameObject> GoEndTiles = new List<GameObject>();
     List<GameObject> GoModifers = new List<GameObject>();
 
     Level level;
@@ -38,10 +54,39 @@ public class TileController : MonoBehaviour {
 
     public int SizeY { get { return sizey; } }
 
+    int speadadd;
+
+    int bombadd;
+
+
     private void Awake () {
 
+        Parent = new GameObject();
         Instace = this;
 
+    }
+
+
+    private void Start () {
+
+        if (Debugmode == true) {
+            GenLevel(DebugLevelIndex);
+        }
+    }
+
+
+    private void Update () {
+
+        while (PlaceingTiles) {
+         
+        }
+
+        if (speadadd > 0) {
+            level.Spread += speadadd;
+        }
+        if (bombadd > 0) {
+            level.Bombs += bombadd;
+        }
     }
 
     public void GenLevel (int LevelToLoad) {
@@ -53,6 +98,38 @@ public class TileController : MonoBehaviour {
         sizex = level.TileMapCruent.GetLength(0);
         sizey = level.TileMapCruent.GetLength(1);
 
+        SpawnCruentMapTiles();
+    }
+
+
+    public void Chageview () {
+        if (ShowCruentTile) {
+
+            foreach (var gos in GoEndTiles) {
+
+                gos.SetActive(false);
+            }
+
+            foreach (var go in GoCruentTiles) {
+                go.SetActive(true);
+            }
+        }
+        else {
+            foreach (var gos in GoEndTiles) {
+
+                gos.SetActive(true);
+            }
+
+            foreach (var go in GoCruentTiles) {
+                go.SetActive(false);
+            }
+        }
+
+        ShowCruentTile = !ShowCruentTile;
+    }
+
+    public void SpawnCruentMapTiles () {
+
         //spawn the tiles
         for (int x = 0; x < level.TileMapCruent.GetLength(0); x++) {
             for (int y = 0; y < level.TileMapCruent.GetLength(1); y++) {
@@ -63,48 +140,107 @@ public class TileController : MonoBehaviour {
 
                         var goW = Instantiate(TileWhite, new Vector3(x, y, 0), Quaternion.identity);
 
-                        goW.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, level.TileMapCruent[x, y].Tilecolor);
+                        goW.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, GetTileAt(x, y).Tilecolor);
 
-                        GoTiles.Add(goW);
+                        GoCruentTiles.Add(goW);
+
+                        goW.transform.parent = Parent.transform;
 
                         break;
 
                     case Tile.TileColor.Blue:
+
                         var goB = Instantiate(TileBlue, new Vector3(x, y, 0), Quaternion.identity);
 
-                        goB.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, level.TileMapCruent[x, y].Tilecolor);
+                        goB.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, GetTileAt(x, y).Tilecolor);
 
-                        GoTiles.Add(goB);
+                        GoCruentTiles.Add(goB);
+
+                        goB.transform.parent = Parent.transform;
 
                         break;
 
                     case Tile.TileColor.Red:
+
                         var goR = Instantiate(TileRed, new Vector3(x, y, 0), Quaternion.identity);
 
-                        goR.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, level.TileMapCruent[x, y].Tilecolor);
+                        goR.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, GetTileAt(x, y).Tilecolor);
 
-                        GoTiles.Add(goR);
+                        GoCruentTiles.Add(goR);
+
+                        goR.transform.parent = Parent.transform;
+
+                        break;
+                    case Tile.TileColor.Yellow:
+
+                        var goY = Instantiate(TileYellow, new Vector3(x, y, 0), Quaternion.identity);
+
+                        goY.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, GetTileAt(x, y).Tilecolor);
+
+                        GoCruentTiles.Add(goY);
+
+                        goY.transform.parent = Parent.transform;
 
                         break;
 
-                    case Tile.TileColor.Yellow:
-                        var goY = Instantiate(TileYellow, new Vector3(x, y, 0), Quaternion.identity);
+                    case Tile.TileColor.Purple:
 
-                        goY.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, level.TileMapCruent[x, y].Tilecolor);
+                        var goP = Instantiate(TilePurple, new Vector3(x, y, 0), Quaternion.identity);
 
-                        GoTiles.Add(goY);
+                        goP.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, GetTileAt(x, y).Tilecolor);
+
+                        GoCruentTiles.Add(goP);
+
+                        goP.transform.parent = Parent.transform;
+
+                        break;
+
+                    case Tile.TileColor.Green:
+
+                        var goG = Instantiate(TileGreen, new Vector3(x, y, 0), Quaternion.identity);
+
+                        goG.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, GetTileAt(x, y).Tilecolor);
+
+                        GoCruentTiles.Add(goG);
+
+                        goG.transform.parent = Parent.transform;
+
+                        break;
+
+                    case Tile.TileColor.Orange:
+
+                        var goO = Instantiate(TileOrange, new Vector3(x, y, 0), Quaternion.identity);
+
+                        goO.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, GetTileAt(x, y).Tilecolor);
+
+                        GoCruentTiles.Add(goO);
+
+                        goO.transform.parent = Parent.transform;
+
+                        break;
+
+                    case Tile.TileColor.Black:
+
+                        var goBl = Instantiate(TileBlack, new Vector3(x, y, 0), Quaternion.identity);
+
+                        goBl.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, GetTileAt(x, y).Tilecolor);
+
+                        GoCruentTiles.Add(goBl);
+
+                        goBl.transform.parent = Parent.transform;
 
                         break;
 
                     default:
                         break;
+                
                 }
 
-                switch (level.TileMapCruent[x,y].Tilemodifer) {
+                switch (level.TileMapCruent[x, y].Tilemodifer) {
                     case Tile.TileModifer.None:
                         break;
                     case Tile.TileModifer.BiggerSpread:
-                        var goSB = Instantiate (TileSpreadPlus, new Vector3(x + 0.5f, y + 0.5f, -0.1f), Quaternion.identity);
+                        var goSB = Instantiate(TileSpreadPlus, new Vector3(x + 0.5f, y + 0.5f, -0.1f), Quaternion.identity);
 
                         goSB.name = string.Format("SpreadPlus{0},{1}", x, y);
 
@@ -119,6 +255,23 @@ public class TileController : MonoBehaviour {
 
                         GoModifers.Add(goSS);
                         break;
+
+                    case Tile.TileModifer.MoreBombs:
+                        var goMB = Instantiate(BombPlus, new Vector3(x + 0.5f, y + 0.5f, -0.1f), Quaternion.identity);
+
+                        goMB.name = string.Format("BombPlus{0},{1}", x, y);
+
+                        GoModifers.Add(goMB);
+                        break;
+
+                    case Tile.TileModifer.LessBomb:
+                        var goLB = Instantiate(BombMinus, new Vector3(x + 0.5f, y + 0.5f, -0.1f), Quaternion.identity);
+
+                        goLB.name = string.Format("BombMinus{0},{1}", x, y);
+
+                        GoModifers.Add(goLB);
+                        break;
+
                     default:
                         break;
                 }
@@ -126,10 +279,152 @@ public class TileController : MonoBehaviour {
         }
     }
 
+
+    public void SpawnEndMapTiles () {
+        
+        //spawn the tiles
+        for (int x = 0; x < level.TileMapCruent.GetLength(0); x++) {
+            for (int y = 0; y < level.TileMapCruent.GetLength(1); y++) {
+
+                switch (level.TileMapEnd[x, y].Tilecolor) {
+                    case Tile.TileColor.White:
+
+                        var goW = Instantiate(TileWhite, new Vector3(x, y, 0), Quaternion.identity);
+
+                        goW.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, GetTileAt(x, y).Tilecolor);
+
+                        GoEndTiles.Add(goW);
+
+                        goW.transform.parent = Parent.transform;
+
+                        break;
+
+                    case Tile.TileColor.Blue:
+
+                        var goB = Instantiate(TileBlue, new Vector3(x, y, 0), Quaternion.identity);
+
+                        goB.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, GetTileAt(x, y).Tilecolor);
+
+                        GoEndTiles.Add(goB);
+
+                        goB.transform.parent = Parent.transform;
+
+                        break;
+
+                    case Tile.TileColor.Red:
+
+                        var goR = Instantiate(TileRed, new Vector3(x, y, 0), Quaternion.identity);
+
+                        goR.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, GetTileAt(x, y).Tilecolor);
+
+                        GoEndTiles.Add(goR);
+
+                        goR.transform.parent = Parent.transform;
+
+                        break;
+                    case Tile.TileColor.Yellow:
+
+                        var goY = Instantiate(TileYellow, new Vector3(x, y, 0), Quaternion.identity);
+
+                        goY.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, GetTileAt(x, y).Tilecolor);
+
+                        GoEndTiles.Add(goY);
+
+                        goY.transform.parent = Parent.transform;
+
+                        break;
+
+                    case Tile.TileColor.Purple:
+
+                        var goP = Instantiate(TilePurple, new Vector3(x, y, 0), Quaternion.identity);
+
+                        goP.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, GetTileAt(x, y).Tilecolor);
+
+                        GoEndTiles.Add(goP);
+
+                        goP.transform.parent = Parent.transform;
+
+                        break;
+
+                    case Tile.TileColor.Green:
+
+                        var goG = Instantiate(TileGreen, new Vector3(x, y, 0), Quaternion.identity);
+
+                        goG.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, GetTileAt(x, y).Tilecolor);
+
+                        GoEndTiles.Add(goG);
+
+                        goG.transform.parent = Parent.transform;
+
+                        break;
+
+                    case Tile.TileColor.Orange:
+
+                        var goO = Instantiate(TileOrange, new Vector3(x, y, 0), Quaternion.identity);
+
+                        goO.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, GetTileAt(x, y).Tilecolor);
+
+                        GoEndTiles.Add(goO);
+
+                        goO.transform.parent = Parent.transform;
+
+                        break;
+
+                    case Tile.TileColor.Black:
+
+                        var goBl = Instantiate(TileBlack, new Vector3(x, y, 0), Quaternion.identity);
+
+                        goBl.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, GetTileAt(x, y).Tilecolor);
+
+                        GoEndTiles.Add(goBl);
+
+                        goBl.transform.parent = Parent.transform;
+
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+        }
+    }
+
+
+    public void PlaceBombAt (Tile t) {
+
+        PlaceingTiles = true;
+
+        GetTileAt(t.X, t.Y).ChangeTileColor(Tile.TileColor.White);
+
+        if (level.Spread > 0 && level.Spread > -1) {
+
+            for (int x = 0; x < level.Spread + 1; x++) {
+
+                if (GetTileAt(t.X + x, t.Y) != null) {
+                    GetTileAt(t.X + x, t.Y).ChangeTileColor(Tile.TileColor.White);
+                }
+                if (GetTileAt(t.X - x, t.Y) != null) {
+                    GetTileAt(t.X - x, t.Y).ChangeTileColor(Tile.TileColor.White);
+                }
+                if (GetTileAt(t.X, t.Y + x) != null) {
+                    GetTileAt(t.X, t.Y + x).ChangeTileColor(Tile.TileColor.White);
+                }
+                if (GetTileAt(t.X, t.Y - x) != null) {
+                    GetTileAt(t.X, t.Y - x).ChangeTileColor(Tile.TileColor.White);
+                }
+            }
+        }
+
+        PlaceingTiles = false;
+    }
+
+
     public void PlaceTileAt (Tile t, Tile.TileColor TC) {
 
-        GetTileAt(t.X, t.Y).ChangeTileColor(ColorCalutor(GetTileAt(t.X, t.Y).Tilecolor, TC));
+        PlaceingTiles = true;
 
+        GetTileAt(t.X, t.Y).ChangeTileColor(ColorCalutor(GetTileAt(t.X, t.Y).Tilecolor, TC));
+        
         if (level.Spread > 0 && level.Spread > -1) {
 
             for (int x = 0; x < level.Spread + 1; x++) {
@@ -148,6 +443,8 @@ public class TileController : MonoBehaviour {
                 }
             }
         }
+
+        PlaceingTiles = false;
     }
 
 
@@ -160,9 +457,9 @@ public class TileController : MonoBehaviour {
             Destroy(g);
         }
 
-        foreach (var g in GoTiles.FindAll((g) => g.transform.position == new Vector3(x, y, 0))) {
+        foreach (var g in GoCruentTiles.FindAll((g) => g.transform.position == new Vector3(x, y, 0))) {
 
-            GoTiles.Remove(g);
+            GoCruentTiles.Remove(g);
 
             Destroy(g);
         }
@@ -178,7 +475,16 @@ public class TileController : MonoBehaviour {
             case Tile.TileModifer.SmallSpread:
                 level.Spread--;
                 level.TileMapCruent[x, y].ChangeTileModifer(Tile.TileModifer.None);
-                
+                break;
+
+            case Tile.TileModifer.MoreBombs:
+                level.Bombs++;
+                level.TileMapCruent[x, y].ChangeTileModifer(Tile.TileModifer.None);
+
+                break;
+            case Tile.TileModifer.LessBomb:
+                level.Bombs--;
+                level.TileMapCruent[x, y].ChangeTileModifer(Tile.TileModifer.None);
                 break;
             default:
                 break;
@@ -191,7 +497,10 @@ public class TileController : MonoBehaviour {
 
                 goW.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, GetTileAt(x, y).Tilecolor);
 
-                GoTiles.Add(goW);
+                GoCruentTiles.Add(goW);
+
+                goW.transform.parent = Parent.transform;
+
                 break;
 
             case Tile.TileColor.Blue:
@@ -200,7 +509,10 @@ public class TileController : MonoBehaviour {
 
                 goB.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, GetTileAt(x, y).Tilecolor);
 
-                GoTiles.Add(goB);
+                GoCruentTiles.Add(goB);
+
+                goB.transform.parent = Parent.transform;
+
                 break;
 
             case Tile.TileColor.Red:
@@ -209,7 +521,9 @@ public class TileController : MonoBehaviour {
 
                 goR.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, GetTileAt(x, y).Tilecolor);
 
-                GoTiles.Add(goR);
+                GoCruentTiles.Add(goR);
+
+                goR.transform.parent = Parent.transform;
 
                 break;
             case Tile.TileColor.Yellow:
@@ -218,7 +532,10 @@ public class TileController : MonoBehaviour {
 
                 goY.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, GetTileAt(x, y).Tilecolor);
 
-                GoTiles.Add(goY);
+                GoCruentTiles.Add(goY);
+
+                goY.transform.parent = Parent.transform;
+
                 break;
 
             case Tile.TileColor.Purple:
@@ -227,7 +544,10 @@ public class TileController : MonoBehaviour {
 
                 goP.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, GetTileAt(x, y).Tilecolor);
 
-                GoTiles.Add(goP);
+                GoCruentTiles.Add(goP);
+
+                goP.transform.parent = Parent.transform;
+
                 break;
 
             case Tile.TileColor.Green:
@@ -236,7 +556,10 @@ public class TileController : MonoBehaviour {
 
                 goG.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, GetTileAt(x, y).Tilecolor);
 
-                GoTiles.Add(goG);
+                GoCruentTiles.Add(goG);
+
+                goG.transform.parent = Parent.transform;
+
                 break;
 
             case Tile.TileColor.Orange:
@@ -245,7 +568,10 @@ public class TileController : MonoBehaviour {
 
                 goO.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, GetTileAt(x, y).Tilecolor);
 
-                GoTiles.Add(goO);
+                GoCruentTiles.Add(goO);
+
+                goO.transform.parent = Parent.transform;
+
                 break;
 
             case Tile.TileColor.Black:
@@ -254,7 +580,10 @@ public class TileController : MonoBehaviour {
 
                 goBl.name = string.Format("Tile:{0}_{1}, color: {2}", x, y, GetTileAt(x, y).Tilecolor);
 
-                GoTiles.Add(goBl);
+                GoCruentTiles.Add(goBl);
+
+                goBl.transform.parent = Parent.transform;
+
                 break;
 
             default:
@@ -271,6 +600,7 @@ public class TileController : MonoBehaviour {
             for (int y = 0; y < sizey; y++) {
 
                 if (level.TileMapCruent[x, y].Tilecolor != level.TileMapEnd[x, y].Tilecolor) {
+
                     return false;
                 }
             }
@@ -315,10 +645,11 @@ public class TileController : MonoBehaviour {
         return level.TileMapCruent[x, y];
     }
 
+
     public Tile.TileColor ColorCalutor (Tile.TileColor TC1, Tile.TileColor TC2) {
 
         if (TC1 == Tile.TileColor.White) {
-            Debug.Log(TC1 + "," + TC2 + "=" + TC1);
+            Debug.Log(TC1 + "," + TC2 + "=" + TC2);
             return TC2;
         }
 

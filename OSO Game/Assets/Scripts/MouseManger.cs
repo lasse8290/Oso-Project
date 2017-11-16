@@ -6,7 +6,7 @@ public class MouseManger : MonoBehaviour {
 
     enum TilePlaceMode {
         none,   //0
-        white,  //1
+        Bomb,   //1
         blue,   //2
         red,    //3
         yellow  //4
@@ -16,6 +16,11 @@ public class MouseManger : MonoBehaviour {
     TilePlaceMode tcp = TilePlaceMode.none;
 
     SpriteRenderer SR;
+
+    [SerializeField]
+    Sprite BombSprite;
+    [SerializeField]
+    Sprite TileSprite;
 
     public void ChageTilePlaceMode (int i) {
 
@@ -48,9 +53,10 @@ public class MouseManger : MonoBehaviour {
 
                         break;
 
-                    case TilePlaceMode.white:
+                    case TilePlaceMode.Bomb:
 
-                        TileController.Instace.PlaceTileAt(t, Tile.TileColor.White);
+                        TileController.Instace.PlaceBombAt(t);
+
                         break;
 
                     case TilePlaceMode.blue:
@@ -81,18 +87,22 @@ public class MouseManger : MonoBehaviour {
                 }
 
                 break;
-            case TilePlaceMode.white:
+            case TilePlaceMode.Bomb:
 
-                if (SR.enabled != true || SR.color != Color.white) {
+                if (SR.enabled != true || SR.sprite != BombSprite) {
 
-                    SR.color = Color.white;
+                    transform.localScale = new Vector3(4,4,4);
+
                     SR.enabled = true;
+                    SR.sprite = BombSprite;
                 }
                 break;
             case TilePlaceMode.blue:
 
                 if (SR.enabled != true || SR.color != Color.blue) {
-                    
+
+                    transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+                    SR.sprite = TileSprite;
                     SR.color = Color.blue;
                     SR.enabled = true;
                 }
@@ -102,6 +112,8 @@ public class MouseManger : MonoBehaviour {
 
                 if (SR.enabled != true || SR.color != Color.red) {
 
+                    transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+                    SR.sprite = TileSprite;
                     SR.color = Color.red;
                     SR.enabled = true;
                 }
@@ -112,6 +124,8 @@ public class MouseManger : MonoBehaviour {
 
                 if (SR.enabled != true || SR.color != Color.yellow) {
 
+                    transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+                    SR.sprite = TileSprite;
                     SR.color = Color.yellow;
                     SR.enabled = true;
                 }
@@ -121,7 +135,7 @@ public class MouseManger : MonoBehaviour {
                 break;
         }
 
-        this.transform.position = Mp;
+        transform.position = Mp;
     }
 
     
