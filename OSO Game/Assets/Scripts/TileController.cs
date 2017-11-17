@@ -96,13 +96,6 @@ public class TileController : MonoBehaviour {
 
         level = new Level(LevelToLoad);
 
-        for (int x = 0; x < level.TileMapEnd.GetLength(0); x++) {
-            for (int y = 0; y < level.TileMapEnd.GetLength(1); y++) {
-
-                Debug.Log(x +"," + y +":" + level.TileMapEnd[x,y].Tilecolor);
-            }
-        }
-
         Spead = level.Spread;
 
         sizex = level.TileMapCruent.GetLength(0);

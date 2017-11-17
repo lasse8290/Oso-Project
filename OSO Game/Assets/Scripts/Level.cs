@@ -43,11 +43,16 @@ public class Level {
             //Level Start 1
             new List<List<string>>{
 
-                new List<string> {"W","W","W","W","W"},
-                new List<string> {"W","W","W","W","W"},
-                new List<string> {"W","W","W","W","W"},
-                new List<string> {"W","W","W","W","W"},
-                new List<string> {"W","W","W","W","W"}
+                new List<string>{"R","W","W","W","R"},
+                new List<string>{"W","W","W","W","R"},
+                new List<string>{"W","W","W","W","W"},
+                new List<string>{"W","W","W","W","W"},
+                new List<string>{"W","W","W","W","W"},
+                new List<string>{"W","W","W","W","W"},
+                new List<string>{"W","W","W","W","W"},
+                new List<string>{"W","W","W","W","W"},
+                new List<string>{"W","W","W","W","R"},
+                new List<string>{"R","W","W","W","R"}
 
             },
 
@@ -57,20 +62,30 @@ public class Level {
 
                 new List<string>{ "No", "No", "No", "No", "No"},
                 new List<string>{ "No", "No", "No", "No", "No"},
-                new List<string>{ "No", "No", "BS", "No", "No"},
                 new List<string>{ "No", "No", "No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No" }
+                new List<string>{ "No", "No", "No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No"}
 
             },
 
             //Level End 3
             new List<List<string>> {
 
-                new List<string>{"B","P","W","W","W"},
-                new List<string>{"P","R","R","W","W"},
-                new List<string>{"W","R","R","R","R"},
-                new List<string>{"W","W","W","R","P"},
-                new List<string>{"W","W","W","P","B"}
+                new List<string>{"P","W","W","W","W"},
+                new List<string>{"W","W","W","W","P"},
+                new List<string>{"W","W","W","W","W"},
+                new List<string>{"W","W","W","W","W"},
+                new List<string>{"W","W","W","W","W"},
+                new List<string>{"W","W","W","W","W"},
+                new List<string>{"W","W","W","W","W"},
+                new List<string>{"W","W","W","W","W"},
+                new List<string>{"W","W","W","W","P"},
+                new List<string>{"P","W","W","W","W"}
 
             }
         }
@@ -97,15 +112,28 @@ public class Level {
 
         //Read The tile color at start and store them
         List<List<string>> mapstart = lev[1];
-        //Reveres the list so that it fits the stringmap
+
         mapstart.Reverse();
+
+        if (lev[1].Count != lev[2].Count || lev[1][0].Count != lev[2][0].Count) {
+
+            Debug.LogError("MapStart and Modifers not same size");
+        }
+        if (lev[1].Count != lev[3].Count || lev[1][0].Count != lev[3][0].Count) {
+
+            Debug.LogError("MapStart and MapEnd not same size");
+        }
+        if (lev[3].Count != lev[2].Count || lev[3][0].Count != lev[2][0].Count) {
+
+            Debug.LogError("MapEnd and Modifers not same size");
+        }
 
         Tile.TileColor[,] Tilecolormap = new Tile.TileColor[mapstart[0].Count, mapstart.Count];
 
-        for (int x = 0; x < mapstart.Count; x++) {
-            for (int y = 0; y < mapstart[0].Count; y++) { 
+        for (int x = 0; x < mapstart[0].Count; x++) {
+            for (int y = 0; y < mapstart.Count; y++) {
 
-                switch (mapstart[x][y]) {
+                switch (mapstart[y][x]) {
                     case "W":
                         Tilecolormap[x, y] = Tile.TileColor.White;
                         break;
@@ -141,12 +169,16 @@ public class Level {
         //Read The Tile Modifers and store them
         List<List<string>> Modifers = lev[2];
 
+        Modifers.Reverse();
+
+        Debug.LogWarning("b");
+
         Tile.TileModifer[,] Tillemodifermap = new Tile.TileModifer[Modifers[0].Count, Modifers.Count];
 
-        for (int x = 0; x < Modifers.Count; x++) {
-            for (int y = 0; y < Modifers[0].Count; y++) {
+        for (int x = 0; x < Modifers[0].Count; x++) {
+            for (int y = 0; y < Modifers.Count; y++) {
 
-                switch (Modifers[x][y]) {
+                switch (Modifers[y][x]) {
                     case "No":
                         Tillemodifermap[x, y] = Tile.TileModifer.None;
                         break;
@@ -172,18 +204,19 @@ public class Level {
         TileMapCruent = new Tile[Tilecolormap.GetLength(0), Tilecolormap.GetLength(1)];
         TileMapEnd = new Tile[Tilecolormap.GetLength(0), Tilecolormap.GetLength(1)];
 
-        for (int x = 0; x < Tilecolormap.GetLength(0); x++) {
-            for (int y = 0; y < Tilecolormap.GetLength(1); y++) {
 
-                TileMapCruent[y, x] = new Tile(y, x, Tilecolormap[x, y], Tillemodifermap[x, y]);
+        for (int x = 0; x < TileMapCruent.GetLength(0); x++) {
+            for (int y = 0; y < TileMapCruent.GetLength(1); y++) {
+
+               TileMapCruent[x, y] = new Tile(x, y, Tilecolormap[x, y], Tillemodifermap[x, y]);
             }
         }
 
+        Debug.LogWarning("c");
 
         //Get and set the map end
         List<List<string>> mapend = lev[3];
 
-        //Reveres the list so that it fits the stringmap
         mapend.Reverse();
 
         for (int x = 0; x < TileMapEnd.GetLength(0); x++) {
