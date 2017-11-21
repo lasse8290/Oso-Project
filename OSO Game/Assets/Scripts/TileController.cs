@@ -7,7 +7,7 @@ public class TileController : MonoBehaviour {
     public static TileController Instace { get; set; }
 
     [SerializeField]
-    bool Debugmode = false;
+    bool DebugMode = false;
 
     [SerializeField]
     int DebugLevelIndex;
@@ -15,6 +15,8 @@ public class TileController : MonoBehaviour {
     bool PlaceingTiles = false;
 
     bool ShowCruentTile = true;
+
+    public GameObject TutorialText;
 
     public GameObject TileWhite;
     public GameObject TileBlue;
@@ -61,7 +63,7 @@ public class TileController : MonoBehaviour {
 
     private void Awake () {
 
-        Parent = new GameObject();
+        Parent = new GameObject("Tiles");
         Instace = this;
 
     }
@@ -69,7 +71,7 @@ public class TileController : MonoBehaviour {
 
     private void Start () {
 
-        if (Debugmode == true) {
+        if (DebugMode == true) {
             GenLevel(DebugLevelIndex);
         }
     }
@@ -100,6 +102,12 @@ public class TileController : MonoBehaviour {
 
         sizex = level.TileMapCruent.GetLength(0);
         sizey = level.TileMapCruent.GetLength(1);
+
+        if (level.IsTutorial) {
+
+
+
+        }
 
         SpawnCruentMapTiles();
         SpawnEndMapTiles();

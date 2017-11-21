@@ -95,6 +95,8 @@ public class MouseManger : MonoBehaviour {
             tcp = TilePlaceMode.none;
         }
 
+        Mp.z = -1f;
+
         switch (tcp) {
             case TilePlaceMode.none:
 

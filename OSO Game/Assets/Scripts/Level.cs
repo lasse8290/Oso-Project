@@ -6,6 +6,10 @@ using UnityEngine;
 
 public class Level {
 
+    bool isTutorial = false;
+
+    public bool IsTutorial { get { return isTutorial; } }
+
     //Modifers
     //How far a tile will spread
     public int Spread = 0;
@@ -20,10 +24,7 @@ public class Level {
     public Tile[,] TileMapCruent;
     public Tile[,] TileMapEnd;
 
-    public int LevelCount { get {
-
-            return levels.Count;
-        } }
+    public int LevelCount { get { return levels.Count; } }
 
     //B = blue R = Red Y = Yellow  P = Purple O = Orange G = Green  Bl = Black
 
@@ -43,16 +44,9 @@ public class Level {
             //Level Start 1
             new List<List<string>>{
 
-                new List<string>{"R","W","W","W","R"},
-                new List<string>{"W","W","W","W","R"},
                 new List<string>{"W","W","W","W","W"},
                 new List<string>{"W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W"},
-                new List<string>{"W","W","W","W","R"},
-                new List<string>{"R","W","W","W","R"}
+                new List<string>{"W","W","W","W","W"}
 
             },
 
@@ -61,37 +55,27 @@ public class Level {
             new List<List<string>> {
 
                 new List<string>{ "No", "No", "No", "No", "No"},
+                new List<string>{ "No", "No", "BS", "No", "No"},
                 new List<string>{ "No", "No", "No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No"}
 
             },
 
             //Level End 3
             new List<List<string>> {
 
-                new List<string>{"P","W","W","W","W"},
-                new List<string>{"W","W","W","W","P"},
-                new List<string>{"W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W"},
-                new List<string>{"W","W","W","W","P"},
-                new List<string>{"P","W","W","W","W"}
+                new List<string>{"W","G","R","G","W"},
+                new List<string>{"B","R","R","R","B"},
+                new List<string>{"W","G","R","G","W"}
 
             }
         }
     };
 
     public Level (int LevelToLoad) {
+
+        if (LevelToLoad == 0) {
+            isTutorial = true;
+        }
 
         List<List<List<string>>> lev = levels[LevelToLoad];
 
@@ -171,8 +155,6 @@ public class Level {
 
         Modifers.Reverse();
 
-        Debug.LogWarning("b");
-
         Tile.TileModifer[,] Tillemodifermap = new Tile.TileModifer[Modifers[0].Count, Modifers.Count];
 
         for (int x = 0; x < Modifers[0].Count; x++) {
@@ -211,8 +193,6 @@ public class Level {
                TileMapCruent[x, y] = new Tile(x, y, Tilecolormap[x, y], Tillemodifermap[x, y]);
             }
         }
-
-        Debug.LogWarning("c");
 
         //Get and set the map end
         List<List<string>> mapend = lev[3];
