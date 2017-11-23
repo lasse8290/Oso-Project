@@ -15,7 +15,12 @@ public class MainMenuManger : MonoBehaviour {
 
         Debug.Log(1 + "," + SceneManager.sceneCountInBuildSettings);
 
-        SceneManager.sceneLoaded += (s,sm)=> { GameObject.Find("GameManger").GetComponent<TileController>().GenLevel(lev); };
+        SceneManager.sceneLoaded += (s,sm)=> {
+
+            GameObject.Find("GameManger").GetComponent<TileController>().GenLevel(lev);
+
+            Destroy(this.gameObject);
+        };
 
     }
 

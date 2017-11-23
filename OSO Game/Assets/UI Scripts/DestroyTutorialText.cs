@@ -6,6 +6,6 @@ public class DestroyTutorialText : MonoBehaviour {
 
     private void OnMouseDown () {
 
-        Destroy(this.transform.parent.gameObject);
+        this.transform.parent.gameObject.SetActive(false);
     }
 }

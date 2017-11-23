@@ -93,7 +93,7 @@ public class TileController : MonoBehaviour {
         }
     }
 
-
+    //Load and generates the level at the passed index
     public void GenLevel (int LevelToLoad) {
 
         level = new Level(LevelToLoad);
@@ -105,14 +105,29 @@ public class TileController : MonoBehaviour {
 
         if (level.IsTutorial) {
 
-
-
+            TutorialText.SetActive(true);
         }
 
         SpawnCruentMapTiles();
         SpawnEndMapTiles();
 
+        ShowCruentTile = true;
+
         Chageview();
+    }
+
+    //Destroyes all the Level Gameobjects
+    public void DestroyLevel() {
+
+        foreach (var item in GoCruentTiles) {
+            Destroy(item);
+        }
+        foreach (var item in GoEndTiles) {
+            Destroy(item);
+        }
+        foreach (var item in GoModifers) {
+            Destroy(item);
+        }
     }
 
 
@@ -607,6 +622,7 @@ public class TileController : MonoBehaviour {
 
         Debug.Log(CheckLevelComplete());
     }
+
 
     public bool CheckLevelComplete () {
 

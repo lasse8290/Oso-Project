@@ -1,10 +1,13 @@
 ﻿using System.Text;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class InLevelManger : MonoBehaviour {
+
+    bool MainMeunSelectOption = false;
 
     [SerializeField]
     GameObject SpeadCounter;
@@ -47,4 +50,46 @@ public class InLevelManger : MonoBehaviour {
             ChangeToBomb.text = TileController.Instace.Level.Bombs.ToString();
         }
     }
+
+    public void ChangeMainMeunSelectOption(bool b) {
+
+        MainMeunSelectOption = b;
+
+    }
+
+    public void ButtonPress (bool buttonPress) {
+
+        if (MainMeunSelectOption) {
+
+            if (buttonPress) {
+                Debug.Log("MenuMainMenuLevelYes");
+
+                SceneManager.UnloadSceneAsync(1);
+
+                SceneManager.LoadSceneAsync(0, LoadSceneMode.Single);
+
+                Debug.Log(1 + "," + SceneManager.sceneCountInBuildSettings);
+            }
+
+            if (!buttonPress) {
+                Debug.Log("MenuMainMenuLevelNo");
+            }
+        }
+
+        else if (!MainMeunSelectOption) {
+
+            if (buttonPress) {
+                Debug.Log("MenuRestLevelYes");
+
+                TileController.Instace.DestroyLevel();
+
+                TileController.Instace.GenLevel(TileController.Instace.Level.CruentLevelIndex);
+            }
+
+            if (!buttonPress) {
+                Debug.Log("MenuRestLevelNo");
+                buttonPress = false;
+            }
+        }
+    }     
 }

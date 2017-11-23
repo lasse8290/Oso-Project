@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class Level {
 
+    public int CruentLevelIndex;
+
     bool isTutorial = false;
 
     public bool IsTutorial { get { return isTutorial; } }
@@ -63,9 +65,9 @@ public class Level {
             //Level End 3
             new List<List<string>> {
 
-                new List<string>{"W","G","R","G","W"},
-                new List<string>{"B","R","R","R","B"},
-                new List<string>{"W","G","R","G","W"}
+                new List<string>{"W","G","W","P","W"},
+                new List<string>{"G","W","W","W","P"},
+                new List<string>{"W","G","W","P","W"}
 
             }
         }
@@ -76,6 +78,8 @@ public class Level {
         if (LevelToLoad == 0) {
             isTutorial = true;
         }
+
+        CruentLevelIndex = LevelToLoad;
 
         List<List<List<string>>> lev = levels[LevelToLoad];
 
