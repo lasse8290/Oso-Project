@@ -7,7 +7,7 @@ public class TileController : MonoBehaviour {
     public static TileController Instace { get; set; }
 
     [SerializeField]
-    bool DebugMode = false;
+    public bool DebugMode = false;
 
     [SerializeField]
     int DebugLevelIndex;
@@ -100,13 +100,13 @@ public class TileController : MonoBehaviour {
 
         Spead = level.Spread;
 
-        sizex = level.TileMapCruent.GetLength(0);
-        sizey = level.TileMapCruent.GetLength(1);
-
         if (level.IsTutorial) {
 
             TutorialText.SetActive(true);
         }
+
+        sizex = level.TileMapCruent.GetLength(0);
+        sizey = level.TileMapCruent.GetLength(1);
 
         SpawnCruentMapTiles();
         SpawnEndMapTiles();
@@ -666,7 +666,7 @@ public class TileController : MonoBehaviour {
     /// <returns></returns>
     public Tile GetTileAt (int x, int y) {
 
-        if (x < 0 || y < 0 || y >= sizey || x >= sizex) {
+        if (x < 0 || y < 0 || y >= sizey || x >= sizex ) {
 
             //Debug.LogErrorFormat("GetTile Overflow {0},{1}", x, y);
             return null;

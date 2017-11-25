@@ -28,11 +28,11 @@ public class Level {
 
     public int LevelCount { get { return levels.Count; } }
 
-    //B = blue R = Red Y = Yellow  P = Purple O = Orange G = Green  Bl = Black
+    //B = blue R = Red Y = Yellow  P = Purple O = Orange G = Green K = Black
 
     List<List<List<List<string>>>> levels = new List<List<List<List<string>>>> {
 
-        //Level
+        //Level 0
         new List<List<List<string>>> {
 
             //Start Modifer and Tiles 0
@@ -68,6 +68,56 @@ public class Level {
                 new List<string>{"W","G","W","P","W"},
                 new List<string>{"G","W","W","W","P"},
                 new List<string>{"W","G","W","P","W"}
+
+            }
+        },
+        
+        //Level 1
+        new List<List<List<string>>> {
+
+            //Start Modifer and Tiles 0
+            new List<List<string>> {
+
+                new List<string>{"0","1"},      //Spread, Bombs      
+                new List<string>{"10","10", "10"}  //Blue, Red, Yellow
+
+            },
+
+            //Level Start 1
+            new List<List<string>>{
+
+                new List<string>{"G", "K", "W", "K", "O"},
+                new List<string>{"K", "W", "W", "W", "K"},
+                new List<string>{"W", "W", "W", "W", "W"},
+                new List<string>{"W", "W", "W", "W", "W"},
+                new List<string>{"K", "W", "W", "W", "K"},
+                new List<string>{"O", "K", "W", "K", "G"}
+
+            },
+
+            //Level Tile Modifers 2
+            // Valid tokens No, BS, SS, MB, LB
+            new List<List<string>> {
+
+                new List<string>{ "No", "No", "No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No"},
+                new List<string>{ "No", "MB", "No", "MB", "No"},
+                new List<string>{ "No", "MB", "BS", "MB", "No"},
+                new List<string>{ "No", "No", "No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No"}
+
+            },
+
+            //Level End 3
+            new List<List<string>> {
+
+                new List<string>{"P", "W", "P", "W", "O"},
+                new List<string>{"W", "R", "R", "R", "W"},
+                new List<string>{"W", "W", "P", "W", "W"},
+                new List<string>{"W", "W", "O", "W", "W"},
+                new List<string>{"W", "Y", "Y", "Y", "W"},
+                new List<string>{"O", "W", "O", "W", "P"}
+
 
             }
         }
@@ -143,7 +193,7 @@ public class Level {
                     case "G":
                         Tilecolormap[x, y] = Tile.TileColor.Purple;
                         break;
-                    case "BL":
+                    case "K":
                         Tilecolormap[x, y] = Tile.TileColor.Black;
                         break;
 
@@ -229,7 +279,7 @@ public class Level {
                     case "G":
                         TileMapEnd[x, y] = new Tile(x, y, Tile.TileColor.Green);
                         break;
-                    case "BL":
+                    case "K":
                         TileMapEnd[x, y] = new Tile(x, y, Tile.TileColor.Black);
                         break;
 

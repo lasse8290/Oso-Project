@@ -179,7 +179,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Level 6
+  m_Text: Level 8U
 --- !u!222 &2740112
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -375,7 +375,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Level 8
+  m_Text: Level 9U
 --- !u!222 &153841139
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -516,7 +516,7 @@ GameObject:
   - component: {fileID: 303726577}
   - component: {fileID: 303726576}
   m_Layer: 5
-  m_Name: ButtonLevel 6
+  m_Name: ButtonLevel 8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -534,7 +534,7 @@ RectTransform:
   m_Children:
   - {fileID: 2740110}
   m_Father: {fileID: 1080729713}
-  m_RootOrder: 7
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -693,7 +693,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Level 9
+  m_Text: Level 5U
 --- !u!222 &338988850
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1095,7 +1095,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Level 10
+  m_Text: Level 10U
 --- !u!222 &539612193
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1392,7 +1392,7 @@ GameObject:
   - component: {fileID: 884248643}
   - component: {fileID: 884248642}
   m_Layer: 5
-  m_Name: ButtonLevel 2
+  m_Name: ButtonLevel 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1410,7 +1410,7 @@ RectTransform:
   m_Children:
   - {fileID: 1396893593}
   m_Father: {fileID: 1080729713}
-  m_RootOrder: 3
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1823,7 +1823,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Level 4
+  m_Text: Level 7U
 --- !u!222 &978809322
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2062,20 +2062,20 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1080729709}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 400.5, y: 326, z: 0}
+  m_LocalPosition: {x: 453.5, y: 326, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 904618040}
   - {fileID: 53201336}
   - {fileID: 272326065}
-  - {fileID: 884248641}
   - {fileID: 1377533046}
-  - {fileID: 2071174221}
   - {fileID: 1951173957}
-  - {fileID: 303726575}
   - {fileID: 1388281032}
-  - {fileID: 1668164088}
   - {fileID: 1733086244}
+  - {fileID: 884248641}
+  - {fileID: 2071174221}
+  - {fileID: 303726575}
+  - {fileID: 1668164088}
   - {fileID: 595147481}
   - {fileID: 464283399}
   m_Father: {fileID: 0}
@@ -2153,7 +2153,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Level 3
+  m_Text: Level 2
 --- !u!222 &1110310876
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2172,7 +2172,7 @@ GameObject:
   - component: {fileID: 1377533048}
   - component: {fileID: 1377533047}
   m_Layer: 5
-  m_Name: ButtonLevel 3
+  m_Name: ButtonLevel 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2190,7 +2190,7 @@ RectTransform:
   m_Children:
   - {fileID: 1110310874}
   m_Father: {fileID: 1080729713}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2242,7 +2242,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2294,7 +2294,7 @@ GameObject:
   - component: {fileID: 1388281034}
   - component: {fileID: 1388281033}
   m_Layer: 5
-  m_Name: ButtonLevel 7
+  m_Name: ButtonLevel 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2312,7 +2312,7 @@ RectTransform:
   m_Children:
   - {fileID: 1402183491}
   m_Father: {fileID: 1080729713}
-  m_RootOrder: 8
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2471,7 +2471,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Level 2
+  m_Text: Level 6U
 --- !u!222 &1396893595
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2545,7 +2545,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Level 7
+  m_Text: Level 4U
 --- !u!222 &1402183493
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2659,7 +2659,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Level 5
+  m_Text: Level 3U
 --- !u!222 &1564253027
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2678,7 +2678,7 @@ GameObject:
   - component: {fileID: 1668164090}
   - component: {fileID: 1668164089}
   m_Layer: 5
-  m_Name: ButtonLevel 8
+  m_Name: ButtonLevel 9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2696,7 +2696,7 @@ RectTransform:
   m_Children:
   - {fileID: 153841137}
   m_Father: {fileID: 1080729713}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2862,7 +2862,7 @@ GameObject:
   - component: {fileID: 1733086246}
   - component: {fileID: 1733086245}
   m_Layer: 5
-  m_Name: ButtonLevel 9
+  m_Name: ButtonLevel 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2880,7 +2880,7 @@ RectTransform:
   m_Children:
   - {fileID: 338988848}
   m_Father: {fileID: 1080729713}
-  m_RootOrder: 10
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2984,7 +2984,7 @@ GameObject:
   - component: {fileID: 1951173959}
   - component: {fileID: 1951173958}
   m_Layer: 5
-  m_Name: ButtonLevel 5
+  m_Name: ButtonLevel 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3002,7 +3002,7 @@ RectTransform:
   m_Children:
   - {fileID: 1564253025}
   m_Father: {fileID: 1080729713}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3106,7 +3106,7 @@ GameObject:
   - component: {fileID: 2071174223}
   - component: {fileID: 2071174222}
   m_Layer: 5
-  m_Name: ButtonLevel 4
+  m_Name: ButtonLevel 7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3124,7 +3124,7 @@ RectTransform:
   m_Children:
   - {fileID: 978809320}
   m_Father: {fileID: 1080729713}
-  m_RootOrder: 5
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

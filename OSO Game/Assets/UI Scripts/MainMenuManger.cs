@@ -13,15 +13,17 @@ public class MainMenuManger : MonoBehaviour {
 
         SceneManager.LoadSceneAsync(1, LoadSceneMode.Single);
 
-        Debug.Log(1 + "," + SceneManager.sceneCountInBuildSettings);
-
         SceneManager.sceneLoaded += (s,sm)=> {
 
-            GameObject.Find("GameManger").GetComponent<TileController>().GenLevel(lev);
+            TileController TCgo = GameObject.Find("GameManger").GetComponent<TileController>();
+
+            TCgo.DebugMode = false;
+
+            TCgo.GenLevel(lev);
 
             Destroy(this.gameObject);
-        };
 
+        };
     }
 
     public void ExitApp () {
