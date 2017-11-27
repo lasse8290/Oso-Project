@@ -64,9 +64,11 @@ public class InLevelManger : MonoBehaviour {
             if (buttonPress) {
                 Debug.Log("MenuMainMenuLevelYes");
 
-                SceneManager.UnloadSceneAsync(1);
+                TileController.Instace.DestroyLevel();
 
                 SceneManager.LoadSceneAsync(0, LoadSceneMode.Single);
+
+                SceneManager.UnloadSceneAsync(1);
 
                 Debug.Log(1 + "," + SceneManager.sceneCountInBuildSettings);
             }
@@ -81,9 +83,11 @@ public class InLevelManger : MonoBehaviour {
             if (buttonPress) {
                 Debug.Log("MenuRestLevelYes");
 
+                int i = TileController.Instace.Level.CruentLevelIndex;
+
                 TileController.Instace.DestroyLevel();
 
-                TileController.Instace.GenLevel(TileController.Instace.Level.CruentLevelIndex);
+                TileController.Instace.GenLevel(i);
             }
 
             if (!buttonPress) {

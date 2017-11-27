@@ -5,25 +5,37 @@ using UnityEngine;
 
 public class MainMenuManger : MonoBehaviour {
 
-    public void Loadlevel(int lev) {
+    int lev;
+
+
+    public void Loadlevel (int lev) {
 
         DontDestroyOnLoad(this);
 
-        SceneManager.UnloadSceneAsync(0);
+        this.lev = lev;
 
         SceneManager.LoadSceneAsync(1, LoadSceneMode.Single);
 
-        SceneManager.sceneLoaded += (s,sm)=> {
+        SceneManager.UnloadSceneAsync(0);
 
-            TileController TCgo = GameObject.Find("GameManger").GetComponent<TileController>();
+        SceneManager.sceneLoaded += SceneManager_sceneLoaded;
 
-            TCgo.DebugMode = false;
+    }
 
-            TCgo.GenLevel(lev);
+    private void SceneManager_sceneLoaded (Scene S, LoadSceneMode SM) {
 
-            Destroy(this.gameObject);
+        if (S.name == "Level 1") {
 
-        };
+            TileController GO = GameObject.Find("GameManger").GetComponent<TileController>();
+
+            GO.DebugMode = false;
+
+            GO.GenLevel(lev);
+        }
+
+        SceneManager.sceneLoaded -= SceneManager_sceneLoaded;
+
+        Destroy(this.gameObject);
     }
 
     public void ExitApp () {

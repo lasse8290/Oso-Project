@@ -78,8 +78,8 @@ public class Level {
             //Start Modifer and Tiles 0
             new List<List<string>> {
 
-                new List<string>{"0","1"},      //Spread, Bombs      
-                new List<string>{"10","10", "10"}  //Blue, Red, Yellow
+                new List<string>{"0","0"},      //Spread, Bombs      
+                new List<string>{"2","5", "2"}  //Blue, Red, Yellow
 
             },
 
@@ -118,6 +118,52 @@ public class Level {
                 new List<string>{"W", "Y", "Y", "Y", "W"},
                 new List<string>{"O", "W", "O", "W", "P"}
 
+
+            }
+        },
+
+        //Level 2
+        new List<List<List<string>>> {
+
+            //Start Modifer and Tiles 0
+            new List<List<string>> {
+
+                new List<string>{"3","0"},         //Spread, Bombs      
+                new List<string>{"2","2","3"}  //Blue, Red, Yellow
+
+            },
+
+            //Level Start 1
+            new List<List<string>>{
+
+                new List<string>{"W", "W", "W", "W", "W"},
+                new List<string>{"W", "W", "W", "W", "W"},
+                new List<string>{"W", "W", "W", "W", "W"},
+                new List<string>{"W", "W", "W", "W", "W"},
+                new List<string>{"W", "W", "W", "W", "W"}
+
+            },
+
+            //Level Tile Modifers 2
+            // Valid tokens No, BS, SS, MB, LB
+            new List<List<string>> {
+
+                new List<string>{ "No", "No", "No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No"}
+
+            },
+
+            //Level End 3
+            new List<List<string>> {
+
+                new List<string>{"B", "K", "K", "K", "R"},
+                new List<string>{"K", "Y", "Y", "Y", "K"},
+                new List<string>{"K", "Y", "Y", "Y", "K"},
+                new List<string>{"K", "Y", "Y", "Y", "K"},
+                new List<string>{"R", "K", "K", "K", "B"}
 
             }
         }

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 
 public class TileController : MonoBehaviour {
@@ -17,6 +18,8 @@ public class TileController : MonoBehaviour {
     bool ShowCruentTile = true;
 
     public GameObject TutorialText;
+
+    public GameObject VICTORYText;
 
     public GameObject TileWhite;
     public GameObject TileBlue;
@@ -37,9 +40,9 @@ public class TileController : MonoBehaviour {
 
     GameObject Parent;
 
-    List<GameObject> GoCruentTiles = new List<GameObject>();
-    List<GameObject> GoEndTiles = new List<GameObject>();
-    List<GameObject> GoModifers = new List<GameObject>();
+    List<GameObject> GoCruentTiles;
+    List<GameObject> GoEndTiles;
+    List<GameObject> GoModifers;
 
     Level level;
 
@@ -63,8 +66,11 @@ public class TileController : MonoBehaviour {
 
     private void Awake () {
 
+        if (Instace == null) {
+            Instace = this;
+        }
+
         Parent = new GameObject("Tiles");
-        Instace = this;
 
     }
 
@@ -80,7 +86,7 @@ public class TileController : MonoBehaviour {
     private void Update () {
 
         while (PlaceingTiles) {
-         
+
         }
 
         if (speadadd > 0) {
@@ -98,6 +104,8 @@ public class TileController : MonoBehaviour {
 
         level = new Level(LevelToLoad);
 
+        Debug.LogWarningFormat("genlevel{0}", LevelToLoad);
+
         Spead = level.Spread;
 
         if (level.IsTutorial) {
@@ -108,6 +116,10 @@ public class TileController : MonoBehaviour {
         sizex = level.TileMapCruent.GetLength(0);
         sizey = level.TileMapCruent.GetLength(1);
 
+        GoCruentTiles = new List<GameObject>();
+        GoEndTiles = new List<GameObject>();
+        GoModifers = new List<GameObject>();
+
         SpawnCruentMapTiles();
         SpawnEndMapTiles();
 
@@ -117,17 +129,34 @@ public class TileController : MonoBehaviour {
     }
 
     //Destroyes all the Level Gameobjects
-    public void DestroyLevel() {
+    public void DestroyLevel () {
+
+        Debug.LogWarning("destroyLevel");
 
         foreach (var item in GoCruentTiles) {
+
             Destroy(item);
         }
+
+        GoCruentTiles.RemoveAll((t) => t.name != "");
+
         foreach (var item in GoEndTiles) {
+
             Destroy(item);
         }
+
+        GoEndTiles.RemoveAll((t) => t.name != "");
+
         foreach (var item in GoModifers) {
+
             Destroy(item);
         }
+
+        GoModifers.RemoveAll((t) => t.name != "");
+
+        level = null;
+
+        VICTORYText.SetActive(false);
     }
 
 
@@ -620,7 +649,9 @@ public class TileController : MonoBehaviour {
                 break;
         }
 
-        Debug.Log(CheckLevelComplete());
+        if (CheckLevelComplete()) {
+            VICTORYText.SetActive(true);
+        }
     }
 
 

@@ -54,9 +54,13 @@ public class MouseManger : MonoBehaviour {
 
                     case TilePlaceMode.Bomb:
 
-                        TileController.Instace.PlaceBombAt(t);
+                        if (TileController.Instace.Level.Bombs > 0) {
 
-                        TileController.Instace.Level.Bombs--;
+                            TileController.Instace.PlaceBombAt(t);
+
+                            TileController.Instace.Level.Bombs--;
+
+                        }
 
                         break;
 
