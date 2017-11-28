@@ -85,15 +85,15 @@ public class TileController : MonoBehaviour {
 
     private void Update () {
 
-        while (PlaceingTiles) {
-
+        if (PlaceingTiles) {
+            return;
         }
 
-        if (speadadd > 0) {
+        if (speadadd != 0) {
             level.Spread += speadadd;
             speadadd = 0;
         }
-        if (bombadd > 0) {
+        if (bombadd != 0) {
             level.Bombs += bombadd;
             bombadd = 0;
         }

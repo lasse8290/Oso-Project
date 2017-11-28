@@ -15,7 +15,7 @@ public class Level {
     //Modifers
     //How far a tile will spread
     public int Spread = 0;
-    
+
     //make tiles white
     public int Bombs = 0;
 
@@ -38,7 +38,7 @@ public class Level {
             //Start Modifer and Tiles 0
             new List<List<string>> {
 
-                new List<string>{"0","1"},      //Spread, Bombs      
+                new List<string>{"1","0"},      //Spread, Bombs      
                 new List<string>{"2","2", "2"}  //Blue, Red, Yellow
 
             },
@@ -57,7 +57,7 @@ public class Level {
             new List<List<string>> {
 
                 new List<string>{ "No", "No", "No", "No", "No"},
-                new List<string>{ "No", "No", "BS", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No"},
                 new List<string>{ "No", "No", "No", "No", "No"},
 
             },
@@ -65,14 +65,54 @@ public class Level {
             //Level End 3
             new List<List<string>> {
 
-                new List<string>{"W","G","W","P","W"},
-                new List<string>{"G","W","W","W","P"},
-                new List<string>{"W","G","W","P","W"}
+                new List<string>{"Y","O","R","P","B"},
+                new List<string>{"Y","W","R","W","B"},
+                new List<string>{"Y","O","R","P","B"}
 
             }
         },
         
         //Level 1
+        new List<List<List<string>>> {
+
+            //Start Modifer and Tiles 0
+            new List<List<string>> {
+
+                new List<string>{"0","0"},      //Spread, Bombs      
+                new List<string>{"2","2", "2"}  //Blue, Red, Yellow
+
+            },
+
+            //Level Start 1
+            new List<List<string>>{
+
+                new List<string>{"W","W","W","W","W"},
+                new List<string>{"W","W","W","W","W"},
+                new List<string>{"W","W","W","W","W"}
+
+            },
+
+            //Level Tile Modifers 2
+            // Valid tokens No, BS, SS, MB, LB
+            new List<List<string>> {
+
+                new List<string>{ "No", "No", "No", "No", "No"},
+                new List<string>{ "No", "MB", "BS", "MB", "No"},
+                new List<string>{ "No", "No", "No", "No", "No"},
+
+            },
+
+            //Level End 3
+            new List<List<string>> {
+
+                new List<string>{"W","G","R","P","W"},
+                new List<string>{"G","R","R","R","P"},
+                new List<string>{"W","G","R","P","W"}
+
+            }
+        },
+        
+        //Level 2
         new List<List<List<string>>> {
 
             //Start Modifer and Tiles 0
@@ -122,7 +162,7 @@ public class Level {
             }
         },
 
-        //Level 2
+        //Level 3
         new List<List<List<string>>> {
 
             //Start Modifer and Tiles 0
@@ -141,6 +181,7 @@ public class Level {
                 new List<string>{"W", "W", "W", "W", "W"},
                 new List<string>{"W", "W", "W", "W", "W"},
                 new List<string>{"W", "W", "W", "W", "W"}
+
 
             },
 
@@ -166,7 +207,296 @@ public class Level {
                 new List<string>{"R", "K", "K", "K", "B"}
 
             }
-        }
+        },
+
+        //Level 4
+        new List<List<List<string>>> {
+
+            //Start Modifer and Tiles 0
+            new List<List<string>> {
+
+                new List<string>{"2","1"},         //Spread, Bombs      
+                new List<string>{"4","4","1"}  //Blue, Red, Yellow
+
+            },
+
+            //Level Start 1
+            new List<List<string>>{
+
+                new List<string>{"W", "W", "W", "W", "W"},
+                new List<string>{"W", "W", "W", "W", "W"},
+                new List<string>{"W", "W", "W", "W", "W"},
+                new List<string>{"W", "W", "W", "W", "W"},
+                new List<string>{"W", "W", "W", "W", "W"},
+                new List<string>{"W", "W", "W", "W", "W"},
+                new List<string>{"W", "W", "W", "W", "W"},
+                new List<string>{"W", "W", "W", "W", "W"},
+                new List<string>{"W", "W", "W", "W", "W"}
+            },
+
+            //Level Tile Modifers 2
+            // Valid tokens No, BS, SS, MB, LB
+            new List<List<string>> {
+
+                new List<string>{ "No", "No", "No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No"},
+                new List<string>{ "No", "No", "SS", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No"}
+            },
+
+            //Level End 3
+            new List<List<string>> {
+
+                new List<string>{"R", "R", "P", "B", "B"},
+                new List<string>{"R", "W", "W", "W", "B"},
+                new List<string>{"R", "B", "Y", "R", "B"},
+                new List<string>{"B", "B", "W", "R", "R"},
+                new List<string>{"Y", "W", "W", "W", "B"},
+                new List<string>{"R", "R", "W", "B", "B"},
+                new List<string>{"B", "R", "Y", "B", "R"},
+                new List<string>{"B", "W", "W", "W", "R"},
+                new List<string>{"B", "B", "P", "R", "R"}
+
+            }
+        },
+        
+        //Level 5
+        new List<List<List<string>>> {
+
+            //Start Modifer and Tiles 0
+            new List<List<string>> {
+
+                new List<string>{"2","1"},         //Spread, Bombs      
+                new List<string>{"10","10","10"}  //Blue, Red, Yellow
+
+            },
+
+            //Level Start 1
+            new List<List<string>>{
+
+                new List<string>{"W", "W", "W", "W", "W"},
+                new List<string>{"W", "O", "W", "G", "W"},
+                new List<string>{"W", "W", "W", "W", "W"},
+                new List<string>{"W", "W", "W", "W", "W"},
+                new List<string>{"W", "Y", "Y", "Y", "W"},
+                new List<string>{"W", "W", "W", "W", "W"},
+                new List<string>{"W", "W", "W", "W", "W"},
+                new List<string>{"W", "O", "W", "G", "W"},
+                new List<string>{"W", "W", "W", "W", "W"}
+
+            },
+
+            //Level Tile Modifers 2
+            // Valid tokens No, BS, SS, MB, LB
+            new List<List<string>> {
+
+                new List<string>{ "No", "No", "No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No"},
+                new List<string>{ "No", "No", "SS", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No"}
+            },
+
+            //Level End 3
+            new List<List<string>> {
+
+                new List<string>{"Y", "O", "P", "O", "Y"},
+                new List<string>{"Y", "R", "B", "R", "Y"},
+                new List<string>{"O", "R", "W", "R", "O"},
+                new List<string>{"G", "W", "W", "W", "G"},
+                new List<string>{"Y", "R", "W", "R", "Y"},
+                new List<string>{"O", "R", "P", "R", "O"},
+                new List<string>{"Y", "R", "W", "R", "Y"},
+                new List<string>{"Y", "R", "W", "R", "Y"},
+                new List<string>{"Y", "Y", "Y", "Y", "Y"}
+
+            }
+        },
+
+        //Level 6
+        new List<List<List<string>>> {
+
+            //Start Modifer and Tiles 0
+            new List<List<string>> {
+
+                new List<string>{"5","0"},      //Spread, Bombs      
+                new List<string>{"10","10", "10"}  //Blue, Red, Yellow
+
+            },
+
+            //Level Start 1
+            new List<List<string>>{
+
+                new List<string>{"W","W","W","W","W","W","W","W"},
+                new List<string>{"W","W","W","W","W","W","W","W"},
+                new List<string>{"W","W","W","W","W","W","W","W"},
+                new List<string>{"W","W","W","W","W","W","W","W"},
+                new List<string>{"W","W","W","W","W","W","W","W"},
+                new List<string>{"W","W","W","W","W","W","W","W"},
+                new List<string>{"W","W","W","W","W","W","W","W"},
+                new List<string>{"W","W","W","W","W","W","W","W"},
+                new List<string>{"W","W","W","W","W","W","W","W"},
+                new List<string>{"W","W","W","W","W","W","W","W"},
+                new List<string>{"W","W","W","W","W","W","W","W"},
+                new List<string>{"W","W","W","W","W","W","W","W"},
+            },
+
+            //Level Tile Modifers 2
+            // Valid tokens No, BS, SS, MB, LB
+            new List<List<string>> {
+
+                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
+
+            },
+
+            //Level End 3
+            new List<List<string>> {
+
+                new List<string>{"B","G","B","B","B","B","G","B"},
+                new List<string>{"Y","Y","Y","G","G","Y","Y","Y"},
+                new List<string>{"B","G","B","B","B","B","G","W"},
+                new List<string>{"W","Y","W","B","B","W","Y","W"},
+                new List<string>{"W","Y","W","B","B","W","Y","W"},
+                new List<string>{"W","O","W","B","B","W","O","W"},
+                new List<string>{"W","O","W","B","B","W","O","W"},
+                new List<string>{"W","R","W","B","B","W","R","W"},
+                new List<string>{"W","R","W","B","B","W","R","W"},
+                new List<string>{"B","P","B","B","B","B","P","B"},
+                new List<string>{"R","R","R","P","P","B","W","B"},
+                new List<string>{"B","P","B","B","B","B","P","B"},
+
+            }
+        },
+        
+                //Level 6
+        new List<List<List<string>>> {
+
+            //Start Modifer and Tiles 0
+            new List<List<string>> {
+
+                new List<string>{"1","0"},      //Spread, Bombs      
+                new List<string>{"10","10", "10"}  //Blue, Red, Yellow
+
+            },
+
+            //Level Start 1
+            new List<List<string>>{
+
+                new List<string>{"W","W","W","W","W","W","W","W"},
+                new List<string>{"W","W","W","W","W","W","W","W"},
+                new List<string>{"W","W","W","W","W","W","W","W"},
+                new List<string>{"W","W","W","W","W","W","W","W"},
+ 
+            },
+
+            //Level Tile Modifers 2
+            // Valid tokens No, BS, SS, MB, LB
+            new List<List<string>> {
+
+                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
+       
+            },
+
+            //Level End 3
+            new List<List<string>> {
+
+                new List<string>{"B","B","R","R","R","O","B","B"},
+                new List<string>{"B","W","Y","R","O","Y","Y","B"},
+                new List<string>{"R","Y","Y","G","B","Y","W","R"},
+                new List<string>{"R","R","G","B","B","B","R","R"},
+
+            }
+        },
+        
+
+        //Level FreePaint
+        new List<List<List<string>>> {
+
+            //Start Modifer and Tiles 0
+            new List<List<string>> {
+
+                new List<string>{"5","999"},      //Spread, Bombs      
+                new List<string>{"999","999", "999"}  //Blue, Red, Yellow
+
+            },
+
+            //Level Start 1
+            new List<List<string>>{
+
+                new List<string>{"W","W","W","W","W","W","W","W"},
+                new List<string>{"W","W","W","W","W","W","W","W"},
+                new List<string>{"W","W","W","W","W","W","W","W"},
+                new List<string>{"W","W","W","W","W","W","W","W"},
+                new List<string>{"W","W","W","W","W","W","W","W"},
+                new List<string>{"W","W","W","W","W","W","W","W"},
+                new List<string>{"W","W","W","W","W","W","W","W"},
+                new List<string>{"W","W","W","W","W","W","W","W"},
+                new List<string>{"W","W","W","W","W","W","W","W"},
+                new List<string>{"W","W","W","W","W","W","W","W"},
+                new List<string>{"W","W","W","W","W","W","W","W"},
+                new List<string>{"W","W","W","W","W","W","W","W"},
+            },
+
+            //Level Tile Modifers 2
+            // Valid tokens No, BS, SS, MB, LB
+            new List<List<string>> {
+
+                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
+                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
+
+            },
+
+            //Level End 3
+            new List<List<string>> {
+
+                new List<string>{"W","W","W","W","W","W","W","W"},
+                new List<string>{"W","W","W","W","W","W","W","W"},
+                new List<string>{"W","W","W","W","W","W","W","W"},
+                new List<string>{"W","W","W","W","W","W","W","W"},
+                new List<string>{"W","W","W","W","W","W","W","W"},
+                new List<string>{"W","W","W","W","W","W","W","W"},
+                new List<string>{"W","W","W","W","W","W","W","W"},
+                new List<string>{"W","W","W","W","W","W","W","W"},
+                new List<string>{"W","W","W","W","W","W","W","W"},
+                new List<string>{"W","W","W","W","W","W","W","W"},
+                new List<string>{"W","W","W","W","W","W","W","W"},
+                new List<string>{"W","W","W","W","W","W","W","W"},
+
+            }
+        },
     };
 
     public Level (int LevelToLoad) {

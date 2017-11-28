@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraManger : MonoBehaviour {
 
-    GameObject Cam;
+    Camera Cam;
 
     void Start () {
 
@@ -19,7 +19,14 @@ public class CameraManger : MonoBehaviour {
             y += 0.5f;
         }
 
-        Cam = GameObject.FindGameObjectWithTag("MainCamera");
+        Cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+
+        if (TileController.Instace.SizeX >= 8 || TileController.Instace.SizeY >= 8) {
+
+            Debug.LogWarning(Cam.orthographicSize += 4);
+
+            Cam.orthographicSize = 8;
+        }
 
         Cam.transform.position = new Vector3( x, y, -10f);
 
