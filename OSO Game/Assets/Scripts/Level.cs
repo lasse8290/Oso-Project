@@ -256,7 +256,7 @@ public class Level {
                 new List<string>{"R", "W", "W", "W", "B"},
                 new List<string>{"R", "B", "Y", "R", "B"},
                 new List<string>{"B", "B", "W", "R", "R"},
-                new List<string>{"Y", "W", "W", "W", "B"},
+                new List<string>{"Y", "W", "W", "W", "Y"},
                 new List<string>{"R", "R", "W", "B", "B"},
                 new List<string>{"B", "R", "Y", "B", "R"},
                 new List<string>{"B", "W", "W", "W", "R"},
@@ -329,7 +329,7 @@ public class Level {
             new List<List<string>> {
 
                 new List<string>{"5","0"},      //Spread, Bombs      
-                new List<string>{"10","10", "10"}  //Blue, Red, Yellow
+                new List<string>{"4","2", "2"}  //Blue, Red, Yellow
 
             },
 
@@ -374,7 +374,7 @@ public class Level {
 
                 new List<string>{"B","G","B","B","B","B","G","B"},
                 new List<string>{"Y","Y","Y","G","G","Y","Y","Y"},
-                new List<string>{"B","G","B","B","B","B","G","W"},
+                new List<string>{"B","G","B","B","B","B","G","B"},
                 new List<string>{"W","Y","W","B","B","W","Y","W"},
                 new List<string>{"W","Y","W","B","B","W","Y","W"},
                 new List<string>{"W","O","W","B","B","W","O","W"},
@@ -382,20 +382,20 @@ public class Level {
                 new List<string>{"W","R","W","B","B","W","R","W"},
                 new List<string>{"W","R","W","B","B","W","R","W"},
                 new List<string>{"B","P","B","B","B","B","P","B"},
-                new List<string>{"R","R","R","P","P","B","W","B"},
+                new List<string>{"R","R","R","P","P","R","R","R"},
                 new List<string>{"B","P","B","B","B","B","P","B"},
 
             }
         },
         
-                //Level 6
+        //Level 7
         new List<List<List<string>>> {
 
             //Start Modifer and Tiles 0
             new List<List<string>> {
 
                 new List<string>{"1","0"},      //Spread, Bombs      
-                new List<string>{"10","10", "10"}  //Blue, Red, Yellow
+                new List<string>{"4","4", "2"}  //Blue, Red, Yellow
 
             },
 
@@ -438,7 +438,7 @@ public class Level {
             //Start Modifer and Tiles 0
             new List<List<string>> {
 
-                new List<string>{"5","999"},      //Spread, Bombs      
+                new List<string>{"1","999"},      //Spread, Bombs      
                 new List<string>{"999","999", "999"}  //Blue, Red, Yellow
 
             },
