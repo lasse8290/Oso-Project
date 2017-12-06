@@ -106,6 +106,10 @@ public class TileController : MonoBehaviour {
 
         Debug.LogWarningFormat("genlevel{0}", LevelToLoad);
 
+        GoCruentTiles = new List<GameObject>();
+        GoEndTiles = new List<GameObject>();
+        GoModifers = new List<GameObject>();
+
         Spead = level.Spread;
 
         if (level.IsTutorial) {
@@ -115,10 +119,6 @@ public class TileController : MonoBehaviour {
 
         sizex = level.TileMapCruent.GetLength(0);
         sizey = level.TileMapCruent.GetLength(1);
-
-        GoCruentTiles = new List<GameObject>();
-        GoEndTiles = new List<GameObject>();
-        GoModifers = new List<GameObject>();
 
         SpawnCruentMapTiles();
         SpawnEndMapTiles();

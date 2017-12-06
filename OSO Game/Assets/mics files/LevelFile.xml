@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Levels>
+
+  <Level LevelID ="0">
+
+    <Modifers>
+
+      <Spread> 1 </Spread>
+      <bombs>  0 </bombs>
+      
+      <StartTiles>
+
+        <Red> 2 </Red>
+        <Yellow> 2 </Yellow>
+        <Blue> 2 </Blue>
+
+      </StartTiles>
+      
+    </Modifers>
+
+    <TileMap>
+
+      <TileMapStart>
+
+
+      </TileMapStart>
+
+      <TileMapModifers>
+
+
+      </TileMapModifers>
+
+      <TileMapEnd>
+
+
+      </TileMapEnd>
+    
+    </TileMap>
+  
+   </Level>
+
+</Levels>
