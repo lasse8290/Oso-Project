@@ -7,13 +7,13 @@
     <Modifers>
 
       <Spread> 1 </Spread>
-      <bombs>  0 </bombs>
+      <Bombs>  0 </Bombs>
       
       <StartTiles>
 
+        <Blue> 2 </Blue>
         <Red> 2 </Red>
         <Yellow> 2 </Yellow>
-        <Blue> 2 </Blue>
 
       </StartTiles>
       
@@ -22,8 +22,9 @@
     <TileMap>
 
       <TileMapStart>
-
-
+        <Row> W,W,W,W,W, </Row>
+        <Row> W,W,W,W,W, </Row>
+        <Row> W,W,W,W,W, </Row>                
       </TileMapStart>
 
       <TileMapModifers>

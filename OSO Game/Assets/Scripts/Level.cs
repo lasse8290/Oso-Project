@@ -687,9 +687,69 @@ public class Level {
         foreach (XmlNode node in level.ChildNodes) {
 
             Debug.LogWarning(node.Name);
+
+            if (node.Name == "Modifers") {
+                foreach (XmlElement elem in node.ChildNodes) {
+
+                    if (elem.Name == "Spread") {
+                        Spread = int.Parse(elem.InnerText);
+                    }
+
+                    if (elem.Name == "Bombs") {
+
+                        Bombs = int.Parse(elem.InnerText);
+                    }
+
+                    if (elem.Name == "StartTiles") {
+
+                        int i = 0;
+                        foreach (XmlElement starttiles in elem) {
+
+                            switch (i) {
+                                case 0:
+
+                                    TileBlue = int.Parse(starttiles.InnerText);
+                                    i++;
+                                    break;
+                                case 1:
+
+                                    TileRed = int.Parse(starttiles.InnerText);
+                                    i++;
+                                    break;
+                                case 2:
+
+                                    TileYellow = int.Parse(starttiles.InnerText);
+                                    i++;
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (node.Name == "TileMap") {
+
+                foreach (XmlNode item in node) {
+
+                    if (item.Name == "TileMapStart") {
+
+                        int Length = item.ChildNodes[0].InnerText.Split(',').Length;
+
+                        Debug.Log(Length);
+
+                        var i = item.InnerText.Split(',');
+
+                        foreach (var n in i) {
+                            Debug.Log(n.Trim());
+                        }
+                    }
+
+                    Debug.Log(item.Name);
+                }
+            }
         }
-
-
     }
 
     XmlNode GetLevelformFile (XmlDocument Doc, int index) {
@@ -703,7 +763,7 @@ public class Level {
 
                         if (int.Parse(att.Value) == index) {
 
-                            Debug.LogWarning(XN.Name);
+                            Debug.LogWarning(node.Name + att.Value);
 
                             return node;
                         }
