@@ -24,11 +24,14 @@
       <TileMapStart>
         <Row> W,W,W,W,W, </Row>
         <Row> W,W,W,W,W, </Row>
-        <Row> W,W,W,W,W, </Row>                
+        <Row> W,W,W,W,W  </Row>                
       </TileMapStart>
 
       <TileMapModifers>
 
+        <Row> No,No,No,No,No,</Row>
+        <Row> No,No,No,No,No,</Row>
+        <Row> No,No,No,No,No</Row>
 
       </TileMapModifers>
 

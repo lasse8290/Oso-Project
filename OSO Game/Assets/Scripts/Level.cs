@@ -688,6 +688,7 @@ public class Level {
 
             Debug.LogWarning(node.Name);
 
+            //asing modifer from xml doc
             if (node.Name == "Modifers") {
                 foreach (XmlElement elem in node.ChildNodes) {
 
@@ -700,6 +701,7 @@ public class Level {
                         Bombs = int.Parse(elem.InnerText);
                     }
 
+                    //set the tiles the play start with
                     if (elem.Name == "StartTiles") {
 
                         int i = 0;
@@ -729,24 +731,160 @@ public class Level {
                 }
             }
 
+            //Load the Tilemap from file
             if (node.Name == "TileMap") {
+
+                List<Tile.TileColor> mapStart = new List<Tile.TileColor>();
+                List<Tile.TileModifer> mapModifers = new List<Tile.TileModifer>();
+                List<Tile.TileColor> mapEnd = new List<Tile.TileColor>();
+
+                int x;
+                int y;
+
+                x = node.ChildNodes[1].ChildNodes.Count;
+                y = node.ChildNodes[1].ChildNodes[0].InnerText.Split(',').Length;
 
                 foreach (XmlNode item in node) {
 
+                    Debug.LogWarning(node.Name + "," + item.Name);
+
                     if (item.Name == "TileMapStart") {
 
-                        int Length = item.ChildNodes[0].InnerText.Split(',').Length;
+                        if (item.ChildNodes.Count != x || item.ChildNodes[0].InnerText.Split(',').Length != y) {
 
-                        Debug.Log(Length);
+                            Debug.LogErrorFormat("SIZE OF TileMapStart:{0},{1} NOT THE SAME: {2},{3}", item.ChildNodes.Count, item.ChildNodes[0].InnerText.Split(',').Length, x, y);
+                        }
+                        var lst = item.InnerText.Split(',').ToList();
 
-                        var i = item.InnerText.Split(',');
+                        for (int n = 0; n < lst.Count - 1; n++) {
 
-                        foreach (var n in i) {
-                            Debug.Log(n.Trim());
+                            switch (lst[n].Trim()) {
+                                case "W":
+                                    mapStart.Add(Tile.TileColor.White);
+                                    break;
+                                case "B":
+                                    mapStart.Add(Tile.TileColor.Blue);
+                                    break;
+                                case "R":
+                                    mapStart.Add(Tile.TileColor.Red);
+                                    break;
+                                case "Y":
+                                    mapStart.Add(Tile.TileColor.Yellow);
+                                    break;
+                                case "P":
+                                    mapStart.Add(Tile.TileColor.Purple);
+                                    break;
+                                case "O":
+                                    mapStart.Add(Tile.TileColor.Orange);
+                                    break;
+                                case "G":
+                                    mapStart.Add(Tile.TileColor.Green);
+                                    break;
+                                case "K":
+                                    mapStart.Add(Tile.TileColor.Black);
+                                    break;
+                            }
                         }
                     }
 
-                    Debug.Log(item.Name);
+                    if (item.Name == "TileMapModifers") {
+
+                        if (item.ChildNodes.Count != x || item.ChildNodes[0].InnerText.Split(',').Length != y) {
+
+                            Debug.LogErrorFormat("SIZE OF TileMapModifer:{0},{1} NOT THE SAME: {2},{3}", item.ChildNodes.Count, item.ChildNodes[0].InnerText.Split(',').Length, x, y);
+                        }
+
+                        var lst = item.InnerText.Split(',').ToList();
+                        Debug.Log(lst.Count);
+
+                        for (int n = 0; n < lst.Count - 1; n++) {
+
+                            Debug.LogWarning(lst[n].Trim());
+                            
+                            switch (lst[n]) {
+                                case "No":
+                                    mapModifers.Add(Tile.TileModifer.None);
+                                    break;
+                                case "BS":
+                                    mapModifers.Add(Tile.TileModifer.BiggerSpread);
+                                    break;
+                                case "SS":
+                                    mapModifers.Add(Tile.TileModifer.SmallSpread);
+                                    break;
+                                case "MB":
+                                    mapModifers.Add(Tile.TileModifer.MoreBombs);
+                                    break;
+                                case "LB":
+                                    mapModifers.Add(Tile.TileModifer.LessBomb);
+                                    break;
+                                default:
+                                    Debug.LogError("Invalid String token:" + mapModifers[n]);
+                                    break;
+                            }
+                        }
+                    }
+
+                    if (item.Name == "TileMapEnd") {
+
+                        if (item.ChildNodes.Count != x || item.ChildNodes[0].InnerText.Split(',').Length != y) {
+
+                            Debug.LogErrorFormat("SIZE OF TileMapEnd:{0},{1} NOT THE SAME: {2},{3}", item.ChildNodes.Count, item.ChildNodes[0].InnerText.Split(',').Length, x, y);
+                        }
+                        var lst = item.InnerText.Split(',').ToList();
+
+                        for (int n = 0; n < lst.Count - 1; n++) {
+
+                            switch (lst[n].Trim()) {
+                                case "W":
+                                    mapEnd.Add(Tile.TileColor.White);
+                                    break;
+                                case "B":
+                                    mapEnd.Add(Tile.TileColor.Blue);
+                                    break;
+                                case "R":
+                                    mapEnd.Add(Tile.TileColor.Red);
+                                    break;
+                                case "Y":
+                                    mapEnd.Add(Tile.TileColor.Yellow);
+                                    break;
+                                case "P":
+                                    mapEnd.Add(Tile.TileColor.Purple);
+                                    break;
+                                case "O":
+                                    mapEnd.Add(Tile.TileColor.Orange);
+                                    break;
+                                case "G":
+                                    mapEnd.Add(Tile.TileColor.Purple);
+                                    break;
+                                case "K":
+                                    mapStart.Add(Tile.TileColor.Black);
+                                    break;
+                            }
+                        }
+                    }
+
+                    mapStart.Reverse();
+                    mapModifers.Reverse();
+                    mapEnd.Reverse();
+
+                    foreach (var ms in mapModifers) {
+                        Debug.Log(ms);
+                    }
+                
+                    TileMapCruent = new Tile[x,y];
+
+                    for (int xx = 0; xx < x - 1; xx++) {
+                        for (int yy = 0; yy < y - 1; yy++) {
+
+                            Debug.LogWarning(xx + "," + yy + ":" + (xx + yy) + "::" + x + "," + y);
+
+                            Debug.Log(mapStart[xx + yy]);
+                            Debug.Log(mapModifers[xx + yy]);
+
+
+                            TileMapCruent[xx,yy] = new Tile(xx, yy, mapStart[xx + yy], mapModifers[xx + yy]);
+                        }
+                    }
                 }
             }
         }
