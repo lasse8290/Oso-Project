@@ -2,25 +2,25 @@
 
 <Levels>
 
+  <!--
+  TileColor tokens B = blue R = Red Y = Yellow  P = Purple O = Orange G = Green K = Black
+  TileModifers Tokens No = None BS = Bigger spread SS = Smaller Spread, MB = More Bombs, LB = less bombs
+  -->
+  
   <Level LevelID ="0">
 
     <Modifers>
-
       <Spread> 1 </Spread>
       <Bombs>  0 </Bombs>
       
       <StartTiles>
-
-        <Blue> 2 </Blue>
-        <Red> 2 </Red>
+        <Blue>   2 </Blue>
+        <Red>    2 </Red>
         <Yellow> 2 </Yellow>
-
       </StartTiles>
-      
     </Modifers>
 
     <TileMap>
-
       <TileMapStart>
         <Row> W,W,W,W,W, </Row>
         <Row> W,W,W,W,W, </Row>
@@ -28,20 +28,150 @@
       </TileMapStart>
 
       <TileMapModifers>
-
         <Row> No,No,No,No,No,</Row>
         <Row> No,No,No,No,No,</Row>
         <Row> No,No,No,No,No</Row>
-
       </TileMapModifers>
 
       <TileMapEnd>
-
-
+        <Row> Y,O,R,P,B, </Row>
+        <Row> Y,W,R,W,B, </Row>
+        <Row> Y,O,R,P,B  </Row>
       </TileMapEnd>
     
-    </TileMap>
-  
+    </TileMap>  
    </Level>
 
-</Levels>
+  <Level LevelID ="1">
+
+    <Modifers>
+      <Spread> 0 </Spread>
+      <Bombs>  0 </Bombs>
+
+      <StartTiles>
+        <Blue>   2 </Blue>
+        <Red>    2 </Red>
+        <Yellow> 2 </Yellow>
+      </StartTiles>
+    </Modifers>
+
+    <TileMap>
+      <TileMapStart>
+        <Row> W,W,W,W,W, </Row>
+        <Row> W,W,W,W,W, </Row>
+        <Row> W,W,W,W,W  </Row>
+      </TileMapStart>
+
+      <TileMapModifers>
+        <Row> No,No,No,No,No,</Row>
+        <Row> No,MB,BS,MB,No,</Row>
+        <Row> No,No,No,No,No</Row>
+      </TileMapModifers>
+
+      <TileMapEnd>
+        <Row> W,G,R,P,W, </Row>
+        <Row> G,R,R,R,P, </Row>
+        <Row> W,G,R,P,W  </Row>
+      </TileMapEnd>
+
+    </TileMap>
+  </Level>
+
+  <Level LevelID ="2">
+
+    <Modifers>
+      <Spread> 2 </Spread>
+      <Bombs>  1 </Bombs>
+
+      <StartTiles>
+        <Blue>   4 </Blue>
+        <Red>    4 </Red>
+        <Yellow> 1 </Yellow>
+      </StartTiles>
+    </Modifers>
+
+    <TileMap>
+      <TileMapStart>
+        <Row> W, W, W, W, W, </Row>
+        <Row> W, W, W, W, W, </Row>
+        <Row> W, W, W, W, W, </Row>
+        <Row> W, W, W, W, W, </Row>
+        <Row> W, W, W, W, W, </Row>
+        <Row> W, W, W, W, W, </Row>
+        <Row> W, W, W, W, W, </Row>
+        <Row> W, W, W, W, W, </Row>
+        <Row> W, W, W, W, W  </Row>
+      </TileMapStart>
+
+      <TileMapModifers>
+        <Row> No, No, No, No, No, </Row>
+        <Row> No, No, No, No, No, </Row>
+        <Row> No, No, No, No, No, </Row>
+        <Row> No, No, No, No, No, </Row>
+        <Row> No, No, SS, No, No, </Row>
+        <Row> No, No, No, No, No, </Row>
+        <Row> No, No, No, No, No, </Row>
+        <Row> No, No, No, No, No, </Row>
+        <Row> No, No, No, No, No  </Row>
+      </TileMapModifers>
+
+      <TileMapEnd>
+        <Row> R, R, P, B, B, </Row>
+        <Row> R, W, W, W, B, </Row>
+        <Row> R, B, Y, R, B, </Row>
+        <Row> B, B, W, R, R, </Row>
+        <Row> Y, W, W, W, Y, </Row>
+        <Row> R, R, W, B, B, </Row>
+        <Row> B, R, Y, B, R, </Row>
+        <Row> B, W, W, W, R, </Row>
+        <Row> B, B, P, R, R  </Row>
+      </TileMapEnd>
+
+    </TileMap>
+  </Level>
+
+  <Level LevelID ="3">
+
+    <Modifers>
+      <Spread> 0 </Spread>
+      <Bombs>  0 </Bombs>
+
+      <StartTiles>
+        <Blue>   2 </Blue>
+        <Red>    2 </Red>
+        <Yellow> 3 </Yellow>
+      </StartTiles>
+    </Modifers>
+
+    <TileMap>
+      <TileMapStart>
+        <Row> P, K, W, K, O, </Row>
+        <Row> K, W, W, W, K, </Row>
+        <Row> W, W, W, W, W, </Row>
+        <Row> W, W, W, W, W, </Row>
+        <Row> K, W, W, W, K, </Row>
+        <Row> O, K, W, K, P </Row>
+      </TileMapStart>
+
+      <TileMapModifers>
+        <Row> No, No, No, No, No, </Row>
+        <Row> No, No, No, No, No, </Row>
+        <Row> No, MB, No, MB, No, </Row>
+        <Row> No, MB, BS, MB, No, </Row>
+        <Row> No, No, No, No, No, </Row>
+        <Row> No, No, No, No, No </Row>
+      </TileMapModifers>
+
+      <TileMapEnd>
+        <Row> P, W, P, W, O, </Row>
+        <Row> W, R, R, R, W, </Row>
+        <Row> W, W, P, W, W, </Row>
+        <Row> W, W, O, W, W, </Row>
+        <Row> W, Y, Y, Y, W, </Row>
+        <Row> O, W, O, W, P  </Row>
+      </TileMapEnd>
+
+    </TileMap>
+  </Level>
+
+</Levels> 

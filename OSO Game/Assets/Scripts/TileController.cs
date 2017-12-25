@@ -101,10 +101,8 @@ public class TileController : MonoBehaviour {
 
     //Load and generates the level at the passed index
     public void GenLevel (int LevelToLoad) {
-
+        
         level = new Level(LevelToLoad);
-
-        Debug.LogWarningFormat("genlevel{0}", LevelToLoad);
 
         GoCruentTiles = new List<GameObject>();
         GoEndTiles = new List<GameObject>();
@@ -161,26 +159,18 @@ public class TileController : MonoBehaviour {
 
 
     public void Chageview () {
-        if (ShowCruentTile) {
 
-            foreach (var gos in GoEndTiles) {
+        foreach (var item in GoCruentTiles ) {
 
-                gos.SetActive(false);
-            }
-
-            foreach (var go in GoCruentTiles) {
-                go.SetActive(true);
-            }
+            item.SetActive(ShowCruentTile);
         }
-        else {
-            foreach (var gos in GoEndTiles) {
+        foreach (var item in GoModifers) {
 
-                gos.SetActive(true);
-            }
+            item.SetActive(ShowCruentTile);
+        }
+        foreach (var item in GoEndTiles) {
 
-            foreach (var go in GoCruentTiles) {
-                go.SetActive(false);
-            }
+            item.SetActive(!ShowCruentTile);
         }
 
         ShowCruentTile = !ShowCruentTile;

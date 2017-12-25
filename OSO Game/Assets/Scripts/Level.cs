@@ -27,649 +27,6 @@ public class Level {
     public Tile[,] TileMapCruent;
     public Tile[,] TileMapEnd;
 
-    // public int LevelCount { get { return levels.Count; } }
-
-    //B = blue R = Red Y = Yellow  P = Purple O = Orange G = Green K = Black
-    /*
-    List<List<List<List<string>>>> levels = new List<List<List<List<string>>>> {
-
-        //Level 0
-        new List<List<List<string>>> {
-
-            //Start Modifer and Tiles 0
-            new List<List<string>> {
-
-                new List<string>{"1","0"},      //Spread, Bombs      
-                new List<string>{"2","2", "2"}  //Blue, Red, Yellow
-
-            },
-
-            //Level Start 1
-            new List<List<string>>{
-
-                new List<string>{"W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W"}
-
-            },
-
-            //Level Tile Modifers 2
-            // Valid tokens No, BS, SS, MB, LB
-            new List<List<string>> {
-
-                new List<string>{ "No", "No", "No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No"},
-
-            },
-
-            //Level End 3
-            new List<List<string>> {
-
-                new List<string>{"Y","O","R","P","B"},
-                new List<string>{"Y","W","R","W","B"},
-                new List<string>{"Y","O","R","P","B"}
-
-            }
-        },
-        
-        //Level 1
-        new List<List<List<string>>> {
-
-            //Start Modifer and Tiles 0
-            new List<List<string>> {
-
-                new List<string>{"0","0"},      //Spread, Bombs      
-                new List<string>{"2","2", "2"}  //Blue, Red, Yellow
-
-            },
-
-            //Level Start 1
-            new List<List<string>>{
-
-                new List<string>{"W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W"}
-
-            },
-
-            //Level Tile Modifers 2
-            // Valid tokens No, BS, SS, MB, LB
-            new List<List<string>> {
-
-                new List<string>{ "No", "No", "No", "No", "No"},
-                new List<string>{ "No", "MB", "BS", "MB", "No"},
-                new List<string>{ "No", "No", "No", "No", "No"},
-
-            },
-
-            //Level End 3
-            new List<List<string>> {
-
-                new List<string>{"W","G","R","P","W"},
-                new List<string>{"G","R","R","R","P"},
-                new List<string>{"W","G","R","P","W"}
-
-            }
-        },
-        
-        //Level 2
-        new List<List<List<string>>> {
-
-            //Start Modifer and Tiles 0
-            new List<List<string>> {
-
-                new List<string>{"0","0"},      //Spread, Bombs      
-                new List<string>{"2","5", "2"}  //Blue, Red, Yellow
-
-            },
-
-            //Level Start 1
-            new List<List<string>>{
-
-                new List<string>{"G", "K", "W", "K", "O"},
-                new List<string>{"K", "W", "W", "W", "K"},
-                new List<string>{"W", "W", "W", "W", "W"},
-                new List<string>{"W", "W", "W", "W", "W"},
-                new List<string>{"K", "W", "W", "W", "K"},
-                new List<string>{"O", "K", "W", "K", "G"}
-
-            },
-
-            //Level Tile Modifers 2
-            // Valid tokens No, BS, SS, MB, LB
-            new List<List<string>> {
-
-                new List<string>{ "No", "No", "No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No"},
-                new List<string>{ "No", "MB", "No", "MB", "No"},
-                new List<string>{ "No", "MB", "BS", "MB", "No"},
-                new List<string>{ "No", "No", "No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No"}
-
-            },
-
-            //Level End 3
-            new List<List<string>> {
-
-                new List<string>{"P", "W", "P", "W", "O"},
-                new List<string>{"W", "R", "R", "R", "W"},
-                new List<string>{"W", "W", "P", "W", "W"},
-                new List<string>{"W", "W", "O", "W", "W"},
-                new List<string>{"W", "Y", "Y", "Y", "W"},
-                new List<string>{"O", "W", "O", "W", "P"}
-
-
-            }
-        },
-
-        //Level 3
-        new List<List<List<string>>> {
-
-            //Start Modifer and Tiles 0
-            new List<List<string>> {
-
-                new List<string>{"3","0"},         //Spread, Bombs      
-                new List<string>{"2","2","3"}  //Blue, Red, Yellow
-
-            },
-
-            //Level Start 1
-            new List<List<string>>{
-
-                new List<string>{"W", "W", "W", "W", "W"},
-                new List<string>{"W", "W", "W", "W", "W"},
-                new List<string>{"W", "W", "W", "W", "W"},
-                new List<string>{"W", "W", "W", "W", "W"},
-                new List<string>{"W", "W", "W", "W", "W"}
-
-
-            },
-
-            //Level Tile Modifers 2
-            // Valid tokens No, BS, SS, MB, LB
-            new List<List<string>> {
-
-                new List<string>{ "No", "No", "No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No"}
-
-            },
-
-            //Level End 3
-            new List<List<string>> {
-
-                new List<string>{"B", "K", "K", "K", "R"},
-                new List<string>{"K", "Y", "Y", "Y", "K"},
-                new List<string>{"K", "Y", "Y", "Y", "K"},
-                new List<string>{"K", "Y", "Y", "Y", "K"},
-                new List<string>{"R", "K", "K", "K", "B"}
-
-            }
-        },
-
-        //Level 4
-        new List<List<List<string>>> {
-
-            //Start Modifer and Tiles 0
-            new List<List<string>> {
-
-                new List<string>{"2","1"},         //Spread, Bombs      
-                new List<string>{"4","4","1"}  //Blue, Red, Yellow
-
-            },
-
-            //Level Start 1
-            new List<List<string>>{
-
-                new List<string>{"W", "W", "W", "W", "W"},
-                new List<string>{"W", "W", "W", "W", "W"},
-                new List<string>{"W", "W", "W", "W", "W"},
-                new List<string>{"W", "W", "W", "W", "W"},
-                new List<string>{"W", "W", "W", "W", "W"},
-                new List<string>{"W", "W", "W", "W", "W"},
-                new List<string>{"W", "W", "W", "W", "W"},
-                new List<string>{"W", "W", "W", "W", "W"},
-                new List<string>{"W", "W", "W", "W", "W"}
-            },
-
-            //Level Tile Modifers 2
-            // Valid tokens No, BS, SS, MB, LB
-            new List<List<string>> {
-
-                new List<string>{ "No", "No", "No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No"},
-                new List<string>{ "No", "No", "SS", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No"}
-            },
-
-            //Level End 3
-            new List<List<string>> {
-
-                new List<string>{"R", "R", "P", "B", "B"},
-                new List<string>{"R", "W", "W", "W", "B"},
-                new List<string>{"R", "B", "Y", "R", "B"},
-                new List<string>{"B", "B", "W", "R", "R"},
-                new List<string>{"Y", "W", "W", "W", "Y"},
-                new List<string>{"R", "R", "W", "B", "B"},
-                new List<string>{"B", "R", "Y", "B", "R"},
-                new List<string>{"B", "W", "W", "W", "R"},
-                new List<string>{"B", "B", "P", "R", "R"}
-
-            }
-        },
-        
-        //Level 5
-        new List<List<List<string>>> {
-
-            //Start Modifer and Tiles 0
-            new List<List<string>> {
-
-                new List<string>{"2","1"},         //Spread, Bombs      
-                new List<string>{"10","10","10"}  //Blue, Red, Yellow
-
-            },
-
-            //Level Start 1
-            new List<List<string>>{
-
-                new List<string>{"W", "W", "W", "W", "W"},
-                new List<string>{"W", "O", "W", "G", "W"},
-                new List<string>{"W", "W", "W", "W", "W"},
-                new List<string>{"W", "W", "W", "W", "W"},
-                new List<string>{"W", "Y", "Y", "Y", "W"},
-                new List<string>{"W", "W", "W", "W", "W"},
-                new List<string>{"W", "W", "W", "W", "W"},
-                new List<string>{"W", "O", "W", "G", "W"},
-                new List<string>{"W", "W", "W", "W", "W"}
-
-            },
-
-            //Level Tile Modifers 2
-            // Valid tokens No, BS, SS, MB, LB
-            new List<List<string>> {
-
-                new List<string>{ "No", "No", "No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No"},
-                new List<string>{ "No", "No", "SS", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No"}
-            },
-
-            //Level End 3
-            new List<List<string>> {
-
-                new List<string>{"Y", "O", "P", "O", "Y"},
-                new List<string>{"Y", "R", "B", "R", "Y"},
-                new List<string>{"O", "R", "W", "R", "O"},
-                new List<string>{"G", "W", "W", "W", "G"},
-                new List<string>{"Y", "R", "W", "R", "Y"},
-                new List<string>{"O", "R", "P", "R", "O"},
-                new List<string>{"Y", "R", "W", "R", "Y"},
-                new List<string>{"Y", "R", "W", "R", "Y"},
-                new List<string>{"Y", "Y", "Y", "Y", "Y"}
-
-            }
-        },
-
-        //Level 6
-        new List<List<List<string>>> {
-
-            //Start Modifer and Tiles 0
-            new List<List<string>> {
-
-                new List<string>{"5","0"},      //Spread, Bombs      
-                new List<string>{"4","2", "2"}  //Blue, Red, Yellow
-
-            },
-
-            //Level Start 1
-            new List<List<string>>{
-
-                new List<string>{"W","W","W","W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W","W","W","W"},
-            },
-
-            //Level Tile Modifers 2
-            // Valid tokens No, BS, SS, MB, LB
-            new List<List<string>> {
-
-                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
-
-            },
-
-            //Level End 3
-            new List<List<string>> {
-
-                new List<string>{"B","G","B","B","B","B","G","B"},
-                new List<string>{"Y","Y","Y","G","G","Y","Y","Y"},
-                new List<string>{"B","G","B","B","B","B","G","B"},
-                new List<string>{"W","Y","W","B","B","W","Y","W"},
-                new List<string>{"W","Y","W","B","B","W","Y","W"},
-                new List<string>{"W","O","W","B","B","W","O","W"},
-                new List<string>{"W","O","W","B","B","W","O","W"},
-                new List<string>{"W","R","W","B","B","W","R","W"},
-                new List<string>{"W","R","W","B","B","W","R","W"},
-                new List<string>{"B","P","B","B","B","B","P","B"},
-                new List<string>{"R","R","R","P","P","R","R","R"},
-                new List<string>{"B","P","B","B","B","B","P","B"},
-
-            }
-        },
-        
-        //Level 7
-        new List<List<List<string>>> {
-
-            //Start Modifer and Tiles 0
-            new List<List<string>> {
-
-                new List<string>{"1","0"},      //Spread, Bombs      
-                new List<string>{"4","4", "2"}  //Blue, Red, Yellow
-
-            },
-
-            //Level Start 1
-            new List<List<string>>{
-
-                new List<string>{"W","W","W","W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W","W","W","W"},
- 
-            },
-
-            //Level Tile Modifers 2
-            // Valid tokens No, BS, SS, MB, LB
-            new List<List<string>> {
-
-                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
-       
-            },
-
-            //Level End 3
-            new List<List<string>> {
-
-                new List<string>{"B","B","R","R","R","O","B","B"},
-                new List<string>{"B","W","Y","R","O","Y","Y","B"},
-                new List<string>{"R","Y","Y","G","B","Y","W","R"},
-                new List<string>{"R","R","G","B","B","B","R","R"},
-
-            }
-        },
-        
-
-        //Level FreePaint
-        new List<List<List<string>>> {
-
-            //Start Modifer and Tiles 0
-            new List<List<string>> {
-
-                new List<string>{"1","999"},      //Spread, Bombs      
-                new List<string>{"999","999", "999"}  //Blue, Red, Yellow
-
-            },
-
-            //Level Start 1
-            new List<List<string>>{
-
-                new List<string>{"W","W","W","W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W","W","W","W"},
-            },
-
-            //Level Tile Modifers 2
-            // Valid tokens No, BS, SS, MB, LB
-            new List<List<string>> {
-
-                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
-                new List<string>{ "No", "No", "No", "No", "No","No", "No", "No"},
-
-            },
-
-            //Level End 3
-            new List<List<string>> {
-
-                new List<string>{"W","W","W","W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W","W","W","W"},
-                new List<string>{"W","W","W","W","W","W","W","W"},
-
-            }
-        },
-    };
-
-    */
-    /*    public Level (int LevelToLoad) {
-
-            if (LevelToLoad == 0) {
-                isTutorial = true;
-            }
-
-            CruentLevelIndex = LevelToLoad;
-
-            List<List<List<string>>> lev = levels[LevelToLoad];
-
-            List<string> StartModifers = lev[0][0];
-
-            //Set the modifer(s)
-            Spread = int.Parse(StartModifers[0]);
-
-            Bombs = int.Parse(StartModifers[1]);
-
-            List<string> StartTiles = lev[0][1];
-
-            //Set The Start Tiles
-            TileBlue = int.Parse(StartTiles[0]);
-            TileRed = int.Parse(StartTiles[1]);
-            TileYellow = int.Parse(StartTiles[2]);
-
-
-            //Read The tile color at start and store them
-            List<List<string>> mapstart = lev[1];
-
-            mapstart.Reverse();
-
-            if (lev[1].Count != lev[2].Count || lev[1][0].Count != lev[2][0].Count) {
-
-                Debug.LogError("MapStart and Modifers not same size");
-            }
-            if (lev[1].Count != lev[3].Count || lev[1][0].Count != lev[3][0].Count) {
-
-                Debug.LogError("MapStart and MapEnd not same size");
-            }
-            if (lev[3].Count != lev[2].Count || lev[3][0].Count != lev[2][0].Count) {
-
-                Debug.LogError("MapEnd and Modifers not same size");
-            }
-
-            Tile.TileColor[,] Tilecolormap = new Tile.TileColor[mapstart[0].Count, mapstart.Count];
-
-            for (int x = 0; x < mapstart[0].Count; x++) {
-                for (int y = 0; y < mapstart.Count; y++) {
-
-                    switch (mapstart[y][x]) {
-                        case "W":
-                            Tilecolormap[x, y] = Tile.TileColor.White;
-                            break;
-                        case "B":
-                            Tilecolormap[x, y] = Tile.TileColor.Blue;
-                            break;
-                        case "R":
-                            Tilecolormap[x, y] = Tile.TileColor.Red;
-                            break;
-                        case "Y":
-                            Tilecolormap[x, y] = Tile.TileColor.Yellow;
-                            break;
-                        case "P":
-                            Tilecolormap[x, y] = Tile.TileColor.Purple;
-                            break;
-                        case "O":
-                            Tilecolormap[x, y] = Tile.TileColor.Orange;
-                            break;
-                        case "G":
-                            Tilecolormap[x, y] = Tile.TileColor.Purple;
-                            break;
-                        case "K":
-                            Tilecolormap[x, y] = Tile.TileColor.Black;
-                            break;
-
-                        default:
-                            Debug.LogError("Invalid String token:" + mapstart[x][y]);
-                            break;
-                    }
-                }
-            }
-
-            //Read The Tile Modifers and store them
-            List<List<string>> Modifers = lev[2];
-
-            Modifers.Reverse();
-
-            Tile.TileModifer[,] Tillemodifermap = new Tile.TileModifer[Modifers[0].Count, Modifers.Count];
-
-            for (int x = 0; x < Modifers[0].Count; x++) {
-                for (int y = 0; y < Modifers.Count; y++) {
-
-                    switch (Modifers[y][x]) {
-                        case "No":
-                            Tillemodifermap[x, y] = Tile.TileModifer.None;
-                            break;
-                        case "BS":
-                            Tillemodifermap[x, y] = Tile.TileModifer.BiggerSpread;
-                            break;
-                        case "SS":
-                            Tillemodifermap[x, y] = Tile.TileModifer.SmallSpread;
-                            break;
-                        case "MB":
-                            Tillemodifermap[x, y] = Tile.TileModifer.MoreBombs;
-                            break;
-                        case "LB":
-                            Tillemodifermap[x, y] = Tile.TileModifer.LessBomb;
-                            break;
-                        default:
-                            Debug.LogError("Invalid String token:" + Modifers[x][y]);
-                            break;
-                    }
-                }
-            }
-
-            TileMapCruent = new Tile[Tilecolormap.GetLength(0), Tilecolormap.GetLength(1)];
-            TileMapEnd = new Tile[Tilecolormap.GetLength(0), Tilecolormap.GetLength(1)];
-
-
-            for (int x = 0; x < TileMapCruent.GetLength(0); x++) {
-                for (int y = 0; y < TileMapCruent.GetLength(1); y++) {
-
-                   TileMapCruent[x, y] = new Tile(x, y, Tilecolormap[x, y], Tillemodifermap[x, y]);
-                }
-            }
-
-            //Get and set the map end
-            List<List<string>> mapend = lev[3];
-
-            mapend.Reverse();
-
-            for (int x = 0; x < TileMapEnd.GetLength(0); x++) {
-                for (int y = 0; y < TileMapEnd.GetLength(1); y++) {
-
-                    switch (mapend[y][x]) {
-
-                        case "W":
-                            TileMapEnd[x, y] = new Tile(x, y, Tile.TileColor.White);
-                            break;
-                        case "B":
-                            TileMapEnd[x, y] = new Tile(x, y, Tile.TileColor.Blue);
-                            break;
-                        case "R":
-                            TileMapEnd[x, y] = new Tile(x, y, Tile.TileColor.Red);
-                            break;
-                        case "Y":
-                            TileMapEnd[x, y] = new Tile(x, y, Tile.TileColor.Yellow);
-                            break;
-                        case "P":
-                            TileMapEnd[x, y] = new Tile(x, y, Tile.TileColor.Purple);
-                            break;
-                        case "O":
-                            TileMapEnd[x, y] = new Tile(x, y, Tile.TileColor.Orange);
-                            break;
-                        case "G":
-                            TileMapEnd[x, y] = new Tile(x, y, Tile.TileColor.Green);
-                            break;
-                        case "K":
-                            TileMapEnd[x, y] = new Tile(x, y, Tile.TileColor.Black);
-                            break;
-
-
-                        default:
-                            Debug.LogError("Invalid String token:" + TileMapEnd[x, y]);
-                            break;
-                    }
-                }
-            }
-        }*/
-
     public Level (int LevelToLoad) {
 
         if (LevelToLoad == 0) {
@@ -686,8 +43,6 @@ public class Level {
 
         foreach (XmlNode node in level.ChildNodes) {
 
-            Debug.LogWarning(node.Name);
-
             //asing modifer from xml doc
             if (node.Name == "Modifers") {
                 foreach (XmlElement elem in node.ChildNodes) {
@@ -697,7 +52,6 @@ public class Level {
                     }
 
                     if (elem.Name == "Bombs") {
-
                         Bombs = int.Parse(elem.InnerText);
                     }
 
@@ -731,57 +85,62 @@ public class Level {
                 }
             }
 
-            //Load the Tilemap from file
             if (node.Name == "TileMap") {
 
-                List<Tile.TileColor> mapStart = new List<Tile.TileColor>();
+                //Load the Tilemap from file
+
+                List<Tile.TileColor> mapStartColor = new List<Tile.TileColor>();
                 List<Tile.TileModifer> mapModifers = new List<Tile.TileModifer>();
-                List<Tile.TileColor> mapEnd = new List<Tile.TileColor>();
+                List<Tile.TileColor> mapEndColor = new List<Tile.TileColor>();
 
                 int x;
                 int y;
 
-                x = node.ChildNodes[1].ChildNodes.Count;
-                y = node.ChildNodes[1].ChildNodes[0].InnerText.Split(',').Length;
+                //asing the x & y
+                x = node.ChildNodes[1].ChildNodes[0].InnerText.Split(',').Length - 1;
+                y = node.ChildNodes[1].ChildNodes.Count;
 
+                Debug.LogFormat("Level:{0} Size: {1},{2}", level.Attributes[0].Value, x, y);
+
+                //TileColors and modifers for the tilemap
                 foreach (XmlNode item in node) {
-
-                    Debug.LogWarning(node.Name + "," + item.Name);
 
                     if (item.Name == "TileMapStart") {
 
-                        if (item.ChildNodes.Count != x || item.ChildNodes[0].InnerText.Split(',').Length != y) {
+                        if (item.ChildNodes.Count != y || item.ChildNodes[0].InnerText.Split(',').Length - 1 != x) {
 
-                            Debug.LogErrorFormat("SIZE OF TileMapStart:{0},{1} NOT THE SAME: {2},{3}", item.ChildNodes.Count, item.ChildNodes[0].InnerText.Split(',').Length, x, y);
+                            Debug.LogErrorFormat("SIZE OF TileMapStart:{0},{1} NOT THE SAME: {2},{3}"
+                                                , item.ChildNodes[0].InnerText.Split(',').Length - 1, item.ChildNodes.Count, x, y);
                         }
+
                         var lst = item.InnerText.Split(',').ToList();
 
-                        for (int n = 0; n < lst.Count - 1; n++) {
+                        for (int n = 0; n < lst.Count; n++) {
 
                             switch (lst[n].Trim()) {
                                 case "W":
-                                    mapStart.Add(Tile.TileColor.White);
+                                    mapStartColor.Add(Tile.TileColor.White);
                                     break;
                                 case "B":
-                                    mapStart.Add(Tile.TileColor.Blue);
+                                    mapStartColor.Add(Tile.TileColor.Blue);
                                     break;
                                 case "R":
-                                    mapStart.Add(Tile.TileColor.Red);
+                                    mapStartColor.Add(Tile.TileColor.Red);
                                     break;
                                 case "Y":
-                                    mapStart.Add(Tile.TileColor.Yellow);
+                                    mapStartColor.Add(Tile.TileColor.Yellow);
                                     break;
                                 case "P":
-                                    mapStart.Add(Tile.TileColor.Purple);
+                                    mapStartColor.Add(Tile.TileColor.Purple);
                                     break;
                                 case "O":
-                                    mapStart.Add(Tile.TileColor.Orange);
+                                    mapStartColor.Add(Tile.TileColor.Orange);
                                     break;
                                 case "G":
-                                    mapStart.Add(Tile.TileColor.Green);
+                                    mapStartColor.Add(Tile.TileColor.Green);
                                     break;
                                 case "K":
-                                    mapStart.Add(Tile.TileColor.Black);
+                                    mapStartColor.Add(Tile.TileColor.Black);
                                     break;
                             }
                         }
@@ -789,19 +148,17 @@ public class Level {
 
                     if (item.Name == "TileMapModifers") {
 
-                        if (item.ChildNodes.Count != x || item.ChildNodes[0].InnerText.Split(',').Length != y) {
+                        if (item.ChildNodes.Count != y || item.ChildNodes[0].InnerText.Split(',').Length - 1 != x) {
 
-                            Debug.LogErrorFormat("SIZE OF TileMapModifer:{0},{1} NOT THE SAME: {2},{3}", item.ChildNodes.Count, item.ChildNodes[0].InnerText.Split(',').Length, x, y);
+                            Debug.LogErrorFormat("SIZE OF TileMapModifer:{0},{1} NOT THE SAME: {2},{3}"
+                                                , item.ChildNodes[0].InnerText.Split(',').Length - 1, item.ChildNodes.Count, x, y);
                         }
 
                         var lst = item.InnerText.Split(',').ToList();
-                        Debug.Log(lst.Count);
 
-                        for (int n = 0; n < lst.Count - 1; n++) {
+                        for (int n = 0; n < lst.Count; n++) {
 
-                            Debug.LogWarning(lst[n].Trim());
-                            
-                            switch (lst[n]) {
+                            switch (lst[n].Trim()) {
                                 case "No":
                                     mapModifers.Add(Tile.TileModifer.None);
                                     break;
@@ -818,7 +175,7 @@ public class Level {
                                     mapModifers.Add(Tile.TileModifer.LessBomb);
                                     break;
                                 default:
-                                    Debug.LogError("Invalid String token:" + mapModifers[n]);
+                                    Debug.LogError("Invalid String token:" + lst[n]);
                                     break;
                             }
                         }
@@ -826,65 +183,79 @@ public class Level {
 
                     if (item.Name == "TileMapEnd") {
 
-                        if (item.ChildNodes.Count != x || item.ChildNodes[0].InnerText.Split(',').Length != y) {
+                        if (item.ChildNodes.Count != y || item.ChildNodes[0].InnerText.Split(',').Length - 1 != x) {
 
-                            Debug.LogErrorFormat("SIZE OF TileMapEnd:{0},{1} NOT THE SAME: {2},{3}", item.ChildNodes.Count, item.ChildNodes[0].InnerText.Split(',').Length, x, y);
+                            Debug.LogErrorFormat("SIZE OF TileMapEnd:{0},{1} NOT THE SAME: {2},{3}"
+                                                , item.ChildNodes[0].InnerText.Split(',').Length - 1, item.ChildNodes.Count, x, y);
                         }
+
                         var lst = item.InnerText.Split(',').ToList();
 
-                        for (int n = 0; n < lst.Count - 1; n++) {
+                        for (int n = 0; n < lst.Count; n++) {
 
                             switch (lst[n].Trim()) {
                                 case "W":
-                                    mapEnd.Add(Tile.TileColor.White);
+                                    mapEndColor.Add(Tile.TileColor.White);
                                     break;
                                 case "B":
-                                    mapEnd.Add(Tile.TileColor.Blue);
+                                    mapEndColor.Add(Tile.TileColor.Blue);
                                     break;
                                 case "R":
-                                    mapEnd.Add(Tile.TileColor.Red);
+                                    mapEndColor.Add(Tile.TileColor.Red);
                                     break;
                                 case "Y":
-                                    mapEnd.Add(Tile.TileColor.Yellow);
+                                    mapEndColor.Add(Tile.TileColor.Yellow);
                                     break;
                                 case "P":
-                                    mapEnd.Add(Tile.TileColor.Purple);
+                                    mapEndColor.Add(Tile.TileColor.Purple);
                                     break;
                                 case "O":
-                                    mapEnd.Add(Tile.TileColor.Orange);
+                                    mapEndColor.Add(Tile.TileColor.Orange);
                                     break;
                                 case "G":
-                                    mapEnd.Add(Tile.TileColor.Purple);
+                                    mapEndColor.Add(Tile.TileColor.Green);
                                     break;
                                 case "K":
-                                    mapStart.Add(Tile.TileColor.Black);
+                                    mapEndColor.Add(Tile.TileColor.Black);
                                     break;
                             }
                         }
                     }
+                }
 
-                    mapStart.Reverse();
-                    mapModifers.Reverse();
-                    mapEnd.Reverse();
+                TileMapCruent = new Tile[x, y];
+                TileMapEnd = new Tile[x, y];
 
-                    foreach (var ms in mapModifers) {
-                        Debug.Log(ms);
+                int xx = 0;
+                int yy = y - 1;
+
+                //loop to creating the start tiles
+                for (int n = 0; n < x * y; n++) {
+
+                    if (xx == x) {
+                        xx = 0;
+                        yy--;
                     }
-                
-                    TileMapCruent = new Tile[x,y];
 
-                    for (int xx = 0; xx < x - 1; xx++) {
-                        for (int yy = 0; yy < y - 1; yy++) {
+                    TileMapCruent[xx, yy] = new Tile(xx, yy, mapStartColor[n], mapModifers[n]);
 
-                            Debug.LogWarning(xx + "," + yy + ":" + (xx + yy) + "::" + x + "," + y);
+                    xx++;
+                }
 
-                            Debug.Log(mapStart[xx + yy]);
-                            Debug.Log(mapModifers[xx + yy]);
+                //loop to create the end tile array
+                xx = 0;
+                yy = y - 1;
 
+                for (int n = 0; n < x * y; n++) {
 
-                            TileMapCruent[xx,yy] = new Tile(xx, yy, mapStart[xx + yy], mapModifers[xx + yy]);
-                        }
+                    if (xx == x) {
+                        xx = 0;
+                        yy--;
                     }
+
+                    TileMapEnd[xx, yy] = new Tile(xx, yy, mapEndColor[n]);
+
+                    xx++;
                 }
             }
         }
@@ -893,15 +264,13 @@ public class Level {
     XmlNode GetLevelformFile (XmlDocument Doc, int index) {
 
         foreach (XmlNode XN in Doc) {
-
-            if (XN.Name == "Levels") {
-
                 foreach (XmlNode node in XN) {
+
+                if (node.Attributes != null) {
+
                     foreach (XmlAttribute att in node.Attributes) {
 
                         if (int.Parse(att.Value) == index) {
-
-                            Debug.LogWarning(node.Name + att.Value);
 
                             return node;
                         }

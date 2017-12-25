@@ -23,8 +23,6 @@ public class CameraManger : MonoBehaviour {
 
         if (TileController.Instace.SizeX >= 8 || TileController.Instace.SizeY >= 8) {
 
-            Debug.LogWarning(Cam.orthographicSize += 4);
-
             Cam.orthographicSize = 8;
         }
 

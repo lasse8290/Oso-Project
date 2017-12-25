@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Levels">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="Level">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Modifers">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Spread" type="xs:unsignedByte" />
+                    <xs:element name="Bombs" type="xs:unsignedByte" />
+                    <xs:element name="StartTiles">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Blue" type="xs:unsignedByte" />
+                          <xs:element name="Red" type="xs:unsignedByte" />
+                          <xs:element name="Yellow" type="xs:unsignedByte" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="TileMap">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="TileMapStart">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element maxOccurs="unbounded" name="Row" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="TileMapModifers">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element maxOccurs="unbounded" name="Row" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="TileMapEnd">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element maxOccurs="unbounded" name="Row" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="LevelID" type="xs:unsignedByte" use="required" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
